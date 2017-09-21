@@ -1,0 +1,45 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/channel
+    method: GET
+  response:
+    body: '{"mature":false,"status":null,"broadcaster_language":null,"display_name":"catsbygaming","game":null,"language":"en","_id":"173365798","name":"catsbygaming","created_at":"2017-09-08T14:52:34Z","updated_at":"2017-09-08T14:55:02Z","partner":false,"logo":null,"video_banner":null,"profile_banner":null,"profile_banner_background_color":null,"url":"https://www.twitch.tv/catsbygaming","views":0,"followers":0,"broadcaster_type":"","description":"","stream_key":"live_173365798_2iYl5hGPi1Th88KG3PV9F6S7gmzzaP","email":"clint+catsbygaming@ctshryock.com"}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 13 Sep 2017 15:20:21 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - e9bd25d461dd1e77e1a9af5c38249f3d
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59b94cb4-7c2e186739e7e2f5374ab664
+    status: 200 OK
+    code: 200

@@ -1,0 +1,89 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/ingests
+    method: GET
+  response:
+    body: '{"ingests":[{"_id":1,"url_template":"rtmp://live-dfw.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      Central: Dallas, TX","default":false},{"_id":2,"url_template":"rtmp://live-sin.twitch.tv/app/{stream_key}","availability":1.0,"name":"Asia:
+      Singapore","default":false},{"_id":3,"url_template":"rtmp://live-eze.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Argentina","default":false},{"_id":4,"url_template":"rtmp://live-qro.twitch.tv/app/{stream_key}","availability":1.0,"name":"NA:
+      Mexico City","default":false},{"_id":5,"url_template":"rtmp://live-tpe.twitch.tv/app/{stream_key}","availability":1.0,"name":"Asia:
+      Taipei, Taiwan","default":false},{"_id":6,"url_template":"rtmp://live-sjc.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      West: San Jose,CA","default":false},{"_id":7,"url_template":"rtmp://live-lim.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Lima, Peru","default":false},{"_id":8,"url_template":"rtmp://live-arn.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Stockholm, Sweden","default":false},{"_id":9,"url_template":"rtmp://live-sea.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      West: Seattle,WA","default":false},{"_id":10,"url_template":"rtmp://live-ymq.twitch.tv/app/{stream_key}","availability":1.0,"name":"NA:
+      Quebec, Canada","default":false},{"_id":11,"url_template":"rtmp://live-mia.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      East: Miami, FL","default":false},{"_id":12,"url_template":"rtmp://live-sao.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Sao Paulo, Brazil","default":false},{"_id":13,"url_template":"rtmp://live-lax.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      West: Los Angeles, CA","default":false},{"_id":14,"url_template":"rtmp://live-hkg.twitch.tv/app/{stream_key}","availability":1.0,"name":"Asia:
+      Hong Kong","default":false},{"_id":15,"url_template":"rtmp://live-mrs.twitch.tv/app/{stream_key}","availability":1.0,"name":"Marseille,
+      France","default":false},{"_id":16,"url_template":"rtmp://live-ord.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      East: Chicago","default":false},{"_id":17,"url_template":"rtmp://live-sel.twitch.tv/app/{stream_key}","availability":1.0,"name":"Asia:
+      Seoul, South Korea","default":false},{"_id":18,"url_template":"rtmp://live-phx.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      West: Phoenix, AZ","default":false},{"_id":19,"url_template":"rtmp://live-atl.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      East: Atlanta, GA","default":false},{"_id":20,"url_template":"rtmp://live-sfo.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      West: San Francisco, CA","default":true},{"_id":21,"url_template":"rtmp://live-tyo.twitch.tv/app/{stream_key}","availability":1.0,"name":"Asia:
+      Tokyo, Japan","default":false},{"_id":22,"url_template":"rtmp://live-prg.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Prague, CZ","default":false},{"_id":23,"url_template":"rtmp://live-jfk.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      East: New York, NY","default":false},{"_id":24,"url_template":"rtmp://live-mde.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Medellin, Colombia","default":false},{"_id":25,"url_template":"rtmp://live-den.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      Central: Denver, CO","default":false},{"_id":26,"url_template":"rtmp://live-mad.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Madrid, Spain","default":false},{"_id":27,"url_template":"rtmp://live-lhr.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      London, UK","default":false},{"_id":28,"url_template":"rtmp://live-ams.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Amsterdam, NL","default":false},{"_id":29,"url_template":"rtmp://live-gru.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Sao Paulo, Brazil (deprecated)","default":false},{"_id":30,"url_template":"rtmp://live-mil.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Milan, Italy","default":false},{"_id":31,"url_template":"rtmp://live-hou.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      Central: Houston, TX","default":false},{"_id":32,"url_template":"rtmp://live-gig.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Rio de Janeiro, Brazil (depracated)","default":false},{"_id":33,"url_template":"rtmp://live-pdx.twitch.tv/app/{stream_key}","availability":0.0,"name":"US
+      West: Portland, Oregon","default":false},{"_id":34,"url_template":"rtmp://live-scl.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Chile","default":false},{"_id":35,"url_template":"rtmp://live-yto.twitch.tv/app/{stream_key}","availability":1.0,"name":"NA:
+      Toronto, Canada","default":false},{"_id":36,"url_template":"rtmp://live-lis.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Lisbon, Portugal","default":false},{"_id":37,"url_template":"rtmp://live-cdg.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Paris, FR","default":false},{"_id":38,"url_template":"rtmp://live-waw.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Warsaw, Poland","default":false},{"_id":39,"url_template":"rtmp://live-iad.twitch.tv/app/{stream_key}","availability":1.0,"name":"US
+      East: Ashburn, VA","default":false},{"_id":40,"url_template":"rtmp://live-ber.twitch.tv/app/{stream_key}","availability":1.0,"name":"Berlin,
+      Germany","default":false},{"_id":41,"url_template":"rtmp://live-syd.twitch.tv/app/{stream_key}","availability":1.0,"name":"Australia:
+      Sydney","default":false},{"_id":42,"url_template":"rtmp://live-fra.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Frankfurt, Germany","default":false},{"_id":43,"url_template":"rtmp://live-rio.twitch.tv/app/{stream_key}","availability":1.0,"name":"South
+      America: Rio de Janeiro, Brazil","default":false},{"_id":44,"url_template":"rtmp://live-vie.twitch.tv/app/{stream_key}","availability":1.0,"name":"EU:
+      Vienna, Austria","default":false}]}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 13 Sep 2017 15:20:21 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - 1adaf2e478914bb75c1517a0a438477e
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59b94cb4-461df5305fcec71e22342e91
+    status: 200 OK
+    code: 200

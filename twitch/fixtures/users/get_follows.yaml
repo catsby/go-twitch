@@ -1,0 +1,60 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/users/173365798/follows/channels
+    method: GET
+  response:
+    body: '{"_total":3,"follows":[{"created_at":"2017-09-13T14:52:28Z","channel":{"mature":false,"status":"12h
+      stream + energy drinks","broadcaster_language":"en","display_name":"mewnfarez","game":"Heroes
+      of the Storm","language":"en","_id":"41598188","name":"mewnfarez","created_at":"2013-03-22T19:56:52Z","updated_at":"2017-09-13T15:04:46Z","partner":true,"logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-profile_image-2af79e1168fdde0d-300x300.jpeg","video_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-channel_offline_image-7d4587893b5f3863-1920x1080.png","profile_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-profile_banner-6de5ce3b6e5ca873-480.png","profile_banner_background_color":"#5287a5","url":"https://www.twitch.tv/mewnfarez","views":4201082,"followers":56953,"broadcaster_type":"partner","description":"i
+      like to play video games"},"notifications":false},{"created_at":"2017-09-13T14:52:19Z","channel":{"mature":false,"status":"Kendric
+      - Working double time in the HL Diamond Mines! ","broadcaster_language":"en","display_name":"KendricSwissh","game":"Heroes
+      of the Storm","language":"en","_id":"43664778","name":"kendricswissh","created_at":"2013-05-18T11:48:44Z","updated_at":"2017-09-13T15:04:52Z","partner":true,"logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/kendricswissh-profile_image-1df8e7dd49fad698-300x300.jpeg","video_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/kendricswissh-channel_offline_image-bc6bdb8878ab43ca-1920x1080.jpeg","profile_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/kendricswissh-profile_banner-3a55e7826ed58cbf-480.jpeg","profile_banner_background_color":"#c947d1","url":"https://www.twitch.tv/kendricswissh","views":1080410,"followers":27863,"broadcaster_type":"partner","description":"Kendric
+      is a die-hard Alliance fanboy who seeks to share the joy and passion he feels
+      towards video games with his audience. Reinforced and supported by his loyal
+      Royal Swissh Guard, Kendric won''t stop until even the last non-believer is
+      having a good time on his stream. "},"notifications":false},{"created_at":"2017-09-13T14:52:10Z","channel":{"mature":false,"status":"Grubby
+      - HL EU - 8-2 in placements! - !prime","broadcaster_language":"en","display_name":"FollowGrubby","game":"Heroes
+      of the Storm","language":"en","_id":"20992865","name":"followgrubby","created_at":"2011-03-09T09:38:53Z","updated_at":"2017-09-13T15:05:44Z","partner":true,"logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/followgrubby-profile_image-23e63a06a5986c23-300x300.png","video_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/followgrubby-channel_offline_image-0d860264903c22f0-1920x1080.png","profile_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/d479eda3a5fc7ae4-profile_banner-480.jpeg","profile_banner_background_color":"#2b2a2a","url":"https://www.twitch.tv/followgrubby","views":29609284,"followers":257609,"broadcaster_type":"partner","description":"Hi!
+      I''ve been a progamer for 12 years, and I''m a big fan of Blizzard games like
+      WarCraft III, StarCraft II and Heroes of the Storm. My stream is welcoming to
+      new and experienced players alike. To support you can \"follow\" me and consider
+      subscribing to my channel. "},"notifications":false}]}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 13 Sep 2017 15:20:21 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - 07ee1c5844305e8c6a58d12f0823727d
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59b94cb4-2abc52f2639ac14526ec0fb4
+    status: 200 OK
+    code: 200

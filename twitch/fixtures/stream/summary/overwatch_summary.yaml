@@ -1,0 +1,45 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/streams/summary?game=Overwatch
+    method: GET
+  response:
+    body: '{"channels":864,"viewers":30316}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 13 Sep 2017 15:20:21 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - 28c56c2b7dc6dc9abfdadd15debbc163
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59b94cb4-3def93bc5cdc2e192b31a8d2
+    status: 200 OK
+    code: 200

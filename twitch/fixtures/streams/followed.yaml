@@ -1,0 +1,51 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/streams/followed
+    method: GET
+  response:
+    body: '{"_total":1,"streams":[{"_id":26246576736,"game":"Heroes of the Storm","broadcast_platform":"live","community_id":"848d95be-90b3-44a5-b143-6e373754c382","community_ids":["848d95be-90b3-44a5-b143-6e373754c382","eb998ad4-8f95-4664-8ad4-08ca956a2e32","ff1e77af-551d-4993-945c-f8ceaa2a2829"],"viewers":915,"video_height":1080,"average_fps":60,"delay":0,"created_at":"2017-09-13T08:32:10Z","is_playlist":false,"stream_type":"live","preview":{"small":"https://static-cdn.jtvnw.net/previews-ttv/live_user_kendricswissh-80x45.jpg","medium":"https://static-cdn.jtvnw.net/previews-ttv/live_user_kendricswissh-320x180.jpg","large":"https://static-cdn.jtvnw.net/previews-ttv/live_user_kendricswissh-640x360.jpg","template":"https://static-cdn.jtvnw.net/previews-ttv/live_user_kendricswissh-{width}x{height}.jpg"},"channel":{"mature":false,"status":"Kendric
+      - Working double time in the HL Diamond Mines! ","broadcaster_language":"en","display_name":"KendricSwissh","game":"Heroes
+      of the Storm","language":"en","_id":43664778,"name":"kendricswissh","created_at":"2013-05-18T11:48:44.270733Z","updated_at":"2017-09-13T15:04:52.711119Z","partner":false,"logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/kendricswissh-profile_image-1df8e7dd49fad698-300x300.jpeg","video_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/kendricswissh-channel_offline_image-bc6bdb8878ab43ca-1920x1080.jpeg","profile_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/kendricswissh-profile_banner-3a55e7826ed58cbf-480.jpeg","profile_banner_background_color":"#c947d1","url":"https://www.twitch.tv/kendricswissh","views":1080410,"followers":27863,"broadcaster_type":"","description":"Kendric
+      is a die-hard Alliance fanboy who seeks to share the joy and passion he feels
+      towards video games with his audience. Reinforced and supported by his loyal
+      Royal Swissh Guard, Kendric won''t stop until even the last non-believer is
+      having a good time on his stream. "}}]}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 13 Sep 2017 15:20:21 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - c4e9be943c721fa24a26919b28533f24
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59b94cb4-24ec85281df27dcb375967ea
+    status: 200 OK
+    code: 200

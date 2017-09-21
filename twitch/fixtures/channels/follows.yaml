@@ -1,0 +1,51 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/channels/43664778/follows
+    method: GET
+  response:
+    body: '{"_total":27863,"_cursor":"1505307395937715000","follows":[{"created_at":"2017-09-13T15:16:25Z","notifications":true,"user":{"display_name":"Olsonika","_id":"173911135","name":"olsonika","type":"user","bio":"Just
+      watching xx","created_at":"2017-09-12T13:59:20.131883Z","updated_at":"2017-09-12T17:32:12.225094Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/930a092ccd062070-profile_image-300x300.jpeg"}},{"created_at":"2017-09-13T15:11:53Z","notifications":false,"user":{"display_name":"ukolabrother","_id":"28324677","name":"ukolabrother","type":"user","bio":null,"created_at":"2012-02-18T19:15:42.837503Z","updated_at":"2017-08-21T13:00:21.700081Z","logo":null}},{"created_at":"2017-09-13T15:10:21Z","notifications":true,"user":{"display_name":"TTFU_ZEDZ","_id":"84334251","name":"ttfu_zedz","type":"user","bio":"Super
+      Smash Bros. 64","created_at":"2015-03-04T06:35:45.783647Z","updated_at":"2017-08-30T18:31:50.733737Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/ttfu_zedz-profile_image-2b57c663d2b52576-300x300.png"}},{"created_at":"2017-09-13T15:07:26Z","notifications":true,"user":{"display_name":"T0ncha","_id":"93175927","name":"t0ncha","type":"user","bio":null,"created_at":"2015-06-10T18:18:31.969512Z","updated_at":"2017-08-18T15:34:53.125407Z","logo":null}},{"created_at":"2017-09-13T14:56:48Z","notifications":false,"user":{"display_name":"jaqvb","_id":"161552125","name":"jaqvb","type":"user","bio":null,"created_at":"2017-06-25T18:15:05.560148Z","updated_at":"2017-06-30T16:59:44.032033Z","logo":null}},{"created_at":"2017-09-13T14:55:59Z","notifications":true,"user":{"display_name":"A1ike","_id":"101578218","name":"a1ike","type":"user","bio":null,"created_at":"2015-09-06T12:38:13.178355Z","updated_at":"2016-10-01T08:19:28.947381Z","logo":null}},{"created_at":"2017-09-13T14:52:19Z","notifications":false,"user":{"display_name":"catsbygaming","_id":"173365798","name":"catsbygaming","type":"user","bio":null,"created_at":"2017-09-08T14:52:34.499541Z","updated_at":"2017-09-08T14:55:02.976866Z","logo":null}},{"created_at":"2017-09-13T14:50:37Z","notifications":true,"user":{"display_name":"03c63ef3","_id":"75868589","name":"03c63ef3","type":"user","bio":"
+      ...","created_at":"2014-11-24T18:40:19.501014Z","updated_at":"2017-08-06T10:33:08.935226Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/03c63ef3-profile_image-0eb7cea95719d080-300x300.png"}},{"created_at":"2017-09-13T14:49:16Z","notifications":false,"user":{"display_name":"sapphiron22","_id":"47973697","name":"sapphiron22","type":"user","bio":"Just
+      a casual variety streamer; I typically stream PUBG, Heroes Of the Storm, Hearthstone,
+      and Overwatch but occasionally I will stream something other things.","created_at":"2013-08-22T19:31:05.125525Z","updated_at":"2017-09-13T13:08:31.179313Z","logo":null}},{"created_at":"2017-09-13T14:44:23Z","notifications":false,"user":{"display_name":"FMradyo","_id":"168914898","name":"fmradyo","type":"user","bio":null,"created_at":"2017-08-08T13:32:35.82881Z","updated_at":"2017-09-13T14:31:32.601903Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/967b405153dffb41-profile_image-300x300.jpeg"}},{"created_at":"2017-09-13T14:25:24Z","notifications":false,"user":{"display_name":"mefma95","_id":"150293718","name":"mefma95","type":"user","bio":null,"created_at":"2017-03-13T03:04:44.491858Z","updated_at":"2017-07-28T13:19:27.730396Z","logo":null}},{"created_at":"2017-09-13T14:24:01Z","notifications":false,"user":{"display_name":"guyverlord3","_id":"92718178","name":"guyverlord3","type":"user","bio":null,"created_at":"2015-06-05T01:29:37.120272Z","updated_at":"2017-07-19T13:23:02.399058Z","logo":null}},{"created_at":"2017-09-13T14:21:35Z","notifications":false,"user":{"display_name":"Aftenlyset","_id":"81809580","name":"aftenlyset","type":"user","bio":null,"created_at":"2015-02-04T20:01:22.137521Z","updated_at":"2017-09-11T19:02:33.435321Z","logo":null}},{"created_at":"2017-09-13T14:13:13Z","notifications":true,"user":{"display_name":"noruk5","_id":"23784836","name":"noruk5","type":"user","bio":null,"created_at":"2011-07-31T20:11:18.175868Z","updated_at":"2017-06-02T03:30:08.366042Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/noruk5-profile_image-3d25034b938cb621-300x300.jpeg"}},{"created_at":"2017-09-13T13:57:34Z","notifications":false,"user":{"display_name":"mOvner","_id":"104419232","name":"movner","type":"user","bio":null,"created_at":"2015-10-15T11:01:47.339556Z","updated_at":"2017-08-11T20:02:56.386525Z","logo":null}},{"created_at":"2017-09-13T13:48:01Z","notifications":true,"user":{"display_name":"Diabeates","_id":"173965144","name":"diabeates","type":"user","bio":null,"created_at":"2017-09-12T20:52:49.168354Z","updated_at":"2017-09-12T20:52:50.807568Z","logo":null}},{"created_at":"2017-09-13T13:47:33Z","notifications":false,"user":{"display_name":"viko_ziz","_id":"117410553","name":"viko_ziz","type":"user","bio":null,"created_at":"2016-03-01T01:41:18.388804Z","updated_at":"2017-09-04T13:34:04.221191Z","logo":null}},{"created_at":"2017-09-13T13:45:37Z","notifications":true,"user":{"display_name":"notanothersong","_id":"21945069","name":"notanothersong","type":"user","bio":null,"created_at":"2011-04-23T12:52:15.959594Z","updated_at":"2017-08-18T10:01:49.507044Z","logo":null}},{"created_at":"2017-09-13T13:45:34Z","notifications":true,"user":{"display_name":"GentleSpectrem","_id":"141714835","name":"gentlespectrem","type":"user","bio":"hmm...","created_at":"2016-12-11T02:15:21.984153Z","updated_at":"2017-09-11T15:02:22.415964Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/gentlespectrem-profile_image-c9bcc0ebba37f45f-300x300.jpeg"}},{"created_at":"2017-09-13T13:37:57Z","notifications":true,"user":{"display_name":"Brokko88","_id":"92657549","name":"brokko88","type":"user","bio":null,"created_at":"2015-06-04T07:52:29.681091Z","updated_at":"2017-06-22T16:07:08.059146Z","logo":null}},{"created_at":"2017-09-13T13:18:04Z","notifications":false,"user":{"display_name":"enlighted10","_id":"164203034","name":"enlighted10","type":"user","bio":null,"created_at":"2017-07-12T05:06:45.325982Z","updated_at":"2017-07-12T05:06:45.325982Z","logo":null}},{"created_at":"2017-09-13T13:04:10Z","notifications":false,"user":{"display_name":"dave_atron","_id":"145033177","name":"dave_atron","type":"user","bio":null,"created_at":"2017-01-17T03:15:52.521181Z","updated_at":"2017-08-07T18:01:41.11283Z","logo":null}},{"created_at":"2017-09-13T13:00:44Z","notifications":true,"user":{"display_name":"squiggly_snugs","_id":"112395689","name":"squiggly_snugs","type":"user","bio":"god
+      bless just doesn''t cut it anymore... snugs bless","created_at":"2016-01-11T00:21:47.655476Z","updated_at":"2017-09-03T03:31:33.156188Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/squiggly_snugs-profile_image-d374e7423d3c2694-300x300.png"}},{"created_at":"2017-09-13T12:58:46Z","notifications":false,"user":{"display_name":"SzurkeEg","_id":"102439248","name":"szurkeeg","type":"user","bio":null,"created_at":"2015-09-18T07:32:05.841908Z","updated_at":"2017-08-25T21:29:46.70933Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/szurkeeg-profile_image-5f963d0a217fa523-300x300.jpeg"}},{"created_at":"2017-09-13T12:56:35Z","notifications":false,"user":{"display_name":"DirtySanchez86","_id":"174024042","name":"dirtysanchez86","type":"user","bio":null,"created_at":"2017-09-13T12:56:12.025082Z","updated_at":"2017-09-13T12:56:12.025082Z","logo":null}}]}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 13 Sep 2017 15:20:21 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - 3bb8f8ec076d59eaac46e30ca9c9b285
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59b94cb4-2cfc4c655e008d6e4482aab2
+    status: 200 OK
+    code: 200
