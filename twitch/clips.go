@@ -2,6 +2,7 @@ package twitch
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -89,6 +90,76 @@ func (c *Client) GetClip(i *GetClipInput) (*GetClipOutput, error) {
 
 	var o GetClipOutput
 	if err := decodeJSON(&o.Clip, resp.Body); err != nil {
+		return nil, err
+	}
+
+	return &o, nil
+}
+
+// GetTopClipsOutput is the output of the GetTopClips function.
+type GetTopClipsOutput struct {
+	Clips  []*Clip `mapstructure:"clips"`
+	Cursor string  `mapstructure:"_cursor"`
+}
+
+// GetTopClipsInput is the input to the GetTopClips function.
+type GetTopClipsInput struct {
+	// Channel name. If this is specified, top clips for only this channel are returned; otherwise, top clips for all channels are returned. If both channel and game are specified, game is ignored.
+	Channel string
+	// Tells the server where to start fetching the next set of results, in a multi-page response.
+	Cursor string
+	// Game name. (Game names can be retrieved with the Search Games endpoint.) If this is specified, top clips for only this game are returned; otherwise, top clips for all games are returned. If both channel and game are specified, game is ignored.
+	Game string
+	//   Comma-separated list of languages, which constrains the languages of videos returned. Examples: es, en,es,th. If no language is specified, all languages are returned. Default: "". Maximum: 28 languages.
+	Language string
+	// Maximum number of most-recent objects to return. Default: 10. Maximum: 100.
+	Limit int
+	// The window of time to search for clips. Valid values: day, week, month, all. Default: week.
+	Period string
+	//   If true, the clips returned are ordered by popularity; otherwise, by viewcount. Default: false.
+	Trending bool
+}
+
+// Gets top clips
+// See:
+//  - https://dev.twitch.tv/docs/v5/reference/clips#get-top-clips
+func (c *Client) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
+	path := fmt.Sprintf("/clips/top")
+	params := map[string]string{
+		"channel":  i.Channel,
+		"cursor":   i.Cursor,
+		"game":     i.Game,
+		"language": i.Language,
+		"limit":    strconv.Itoa(i.Limit),
+		"period":   i.Period,
+		"trending": strconv.FormatBool(i.Trending),
+	}
+
+	// TODO should refactor into a method that returns a RequestOptions struct for
+	// a given GetTopClipsInput
+	// strip out any empty parameters
+	for k, v := range params {
+		if v == "" {
+			delete(params, k)
+		}
+		// need limit, default is 10, if it's omitted, just remove it
+		if k == "limit" && v == "0" {
+			delete(params, k)
+		}
+	}
+
+	ro := RequestOptions{
+		Params: params,
+	}
+
+	resp, err := c.Get(path, &ro)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var o GetTopClipsOutput
+	if err := decodeJSON(&o, resp.Body); err != nil {
 		return nil, err
 	}
 

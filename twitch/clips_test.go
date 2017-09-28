@@ -88,3 +88,94 @@ func TestClip_Get_basic(t *testing.T) {
 	}
 
 }
+
+func TestClip_Get_TopClips(t *testing.T) {
+	t.Parallel()
+
+	cases := []struct {
+		Label    string
+		Expected *GetTopClipsOutput
+		Input    *GetTopClipsInput
+	}{
+		{
+			Label: "Heroes_limit_20",
+			Expected: &GetTopClipsOutput{
+				Clips: make([]*Clip, 20),
+			},
+			Input: &GetTopClipsInput{
+				Game:  "Heroes of the Storm",
+				Limit: 20,
+			},
+		},
+		{
+			Label: "Heroes_limit_3_check_slugs",
+			Expected: &GetTopClipsOutput{
+				Clips: []*Clip{
+					&Clip{
+						Game: "Heroes of the Storm",
+						Slug: "WittyEnchantingKiwiAMPTropPunch",
+					},
+					&Clip{
+						Game: "Heroes of the Storm",
+						Slug: "BoxyCoyPterodactylTheTarFu",
+					},
+					&Clip{
+						Game: "Heroes of the Storm",
+						Slug: "VenomousObedientGrassRickroll",
+					},
+				},
+			},
+			Input: &GetTopClipsInput{
+				Game:     "Heroes of the Storm",
+				Limit:    3,
+				Trending: true,
+			},
+		},
+	}
+
+	for _, tc := range cases {
+		var err error
+
+		var output *GetTopClipsOutput
+		record(t, fmt.Sprintf("clips/get_top_clips%s", tc.Label), func(c *Client) {
+			output, err = c.GetTopClips(tc.Input)
+		})
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		if len(output.Clips) != len(tc.Expected.Clips) {
+			t.Fatalf("Length doesn't match, expected (%d), got (%d)", len(tc.Expected.Clips), len(output.Clips))
+		}
+
+		for _, c := range output.Clips {
+			if c.Game != tc.Input.Game {
+				t.Fatalf("Game did not match")
+			}
+		}
+
+		// if the test case provides expected clips with slugs, loop through the
+		// reults and make sure each slug is found
+		var checkSlugs bool
+		foundCount := 0
+		slugs := []string{
+			"VenomousObedientGrassRickroll",
+			"WittyEnchantingKiwiAMPTropPunch",
+			"BoxyCoyPterodactylTheTarFu",
+		}
+		for _, c := range tc.Expected.Clips {
+			if c != nil {
+				checkSlugs = true
+				for _, s := range slugs {
+					if c.Slug == s {
+						foundCount++
+					}
+				}
+			}
+		}
+		if checkSlugs && foundCount != len(slugs) {
+			t.Fatalf("Expected to find (%d) slugs, but only found (%d)", len(slugs), foundCount)
+		}
+	}
+
+}

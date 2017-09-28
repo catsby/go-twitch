@@ -1,0 +1,57 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9)
+    url: https://api.twitch.tv/kraken/clips/top?game=Heroes+of+the+Storm&limit=3&trending=true
+    method: GET
+  response:
+    body: '{"clips":[{"slug":"WittyEnchantingKiwiAMPTropPunch","tracking_id":"131991077","url":"https://clips.twitch.tv/WittyEnchantingKiwiAMPTropPunch?tt_medium=clips_api\u0026tt_content=url","embed_url":"https://clips.twitch.tv/embed?clip=WittyEnchantingKiwiAMPTropPunch\u0026tt_medium=clips_api\u0026tt_content=embed","embed_html":"\u003ciframe
+      src=''https://clips.twitch.tv/embed?clip=WittyEnchantingKiwiAMPTropPunch\u0026tt_medium=clips_api\u0026tt_content=embed''
+      width=''640'' height=''360'' frameborder=''0'' scrolling=''no'' allowfullscreen=''true''\u003e\u003c/iframe\u003e","broadcaster":{"id":"41598188","name":"mewnfarez","display_name":"mewnfarez","channel_url":"https://www.twitch.tv/mewnfarez","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-profile_image-2af79e1168fdde0d-150x150.jpeg"},"curator":{"id":"125973226","name":"skymangoat","display_name":"SkymanGOAT","channel_url":"https://www.twitch.tv/skymangoat","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/skymangoat-profile_image-6c48e33242db330c-150x150.png"},"vod":{"id":"177883723","url":"https://www.twitch.tv/videos/177883723?t=2h26m38s","offset":8798},"broadcast_id":"26351743360","game":"Heroes
+      of the Storm","language":"en","title":"Famous last words: “I can stall this
+      forever” -Mewnfarez","views":17546,"duration":27.999667,"created_at":"2017-09-27T17:39:12Z","thumbnails":{"medium":"https://clips-media-assets.twitch.tv/26351743360-offset-8822-preview-480x272.jpg","small":"https://clips-media-assets.twitch.tv/26351743360-offset-8822-preview-260x147.jpg","tiny":"https://clips-media-assets.twitch.tv/26351743360-offset-8822-preview-86x45.jpg"}},{"slug":"BoxyCoyPterodactylTheTarFu","tracking_id":"132072774","url":"https://clips.twitch.tv/BoxyCoyPterodactylTheTarFu?tt_medium=clips_api\u0026tt_content=url","embed_url":"https://clips.twitch.tv/embed?clip=BoxyCoyPterodactylTheTarFu\u0026tt_medium=clips_api\u0026tt_content=embed","embed_html":"\u003ciframe
+      src=''https://clips.twitch.tv/embed?clip=BoxyCoyPterodactylTheTarFu\u0026tt_medium=clips_api\u0026tt_content=embed''
+      width=''640'' height=''360'' frameborder=''0'' scrolling=''no'' allowfullscreen=''true''\u003e\u003c/iframe\u003e","broadcaster":{"id":"20992865","name":"followgrubby","display_name":"FollowGrubby","channel_url":"https://www.twitch.tv/followgrubby","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/followgrubby-profile_image-23e63a06a5986c23-150x150.png"},"curator":{"id":"112289298","name":"resmi_","display_name":"resmi_","channel_url":"https://www.twitch.tv/resmi_","logo":null},"vod":{"id":"177891116","url":"https://www.twitch.tv/videos/177891116?t=5h34m20s","offset":20060},"broadcast_id":"26351979952","game":"Heroes
+      of the Storm","language":"en-gb","title":"5-Man Stage Dive and 4-Man Isolation
+      (Leftovers vs Polska Pamieta EU HGC Open Division Spoilers)","views":2661,"duration":35.433984,"created_at":"2017-09-27T21:31:18Z","thumbnails":{"medium":"https://clips-media-assets.twitch.tv/26351979952-offset-20060.333333333332-35.416666666666686-preview-480x272.jpg","small":"https://clips-media-assets.twitch.tv/26351979952-offset-20060.333333333332-35.416666666666686-preview-260x147.jpg","tiny":"https://clips-media-assets.twitch.tv/26351979952-offset-20060.333333333332-35.416666666666686-preview-86x45.jpg"}},{"slug":"VenomousObedientGrassRickroll","tracking_id":"132122929","url":"https://clips.twitch.tv/VenomousObedientGrassRickroll?tt_medium=clips_api\u0026tt_content=url","embed_url":"https://clips.twitch.tv/embed?clip=VenomousObedientGrassRickroll\u0026tt_medium=clips_api\u0026tt_content=embed","embed_html":"\u003ciframe
+      src=''https://clips.twitch.tv/embed?clip=VenomousObedientGrassRickroll\u0026tt_medium=clips_api\u0026tt_content=embed''
+      width=''640'' height=''360'' frameborder=''0'' scrolling=''no'' allowfullscreen=''true''\u003e\u003c/iframe\u003e","broadcaster":{"id":"38451834","name":"dunktrain","display_name":"DunkTrain","channel_url":"https://www.twitch.tv/dunktrain","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/dunktrain-profile_image-0843accfc61c0f81-150x150.jpeg"},"curator":{"id":"53583703","name":"sixty_nine_allnight","display_name":"Sixty_Nine_allnight","channel_url":"https://www.twitch.tv/sixty_nine_allnight","logo":null},"vod":{"id":"178000505","url":"https://www.twitch.tv/videos/178000505?t=26m5s","offset":1565},"broadcast_id":"26355202144","game":"Heroes
+      of the Storm","language":"en","title":"Dunk delivers an Academy Award worthy
+      monologue about intentional feeders.","views":130,"duration":37.5,"created_at":"2017-09-28T00:45:23Z","thumbnails":{"medium":"https://clips-media-assets.twitch.tv/26355202144-offset-1565.049-37.49999999999999-preview-480x272.jpg","small":"https://clips-media-assets.twitch.tv/26355202144-offset-1565.049-37.49999999999999-preview-260x147.jpg","tiny":"https://clips-media-assets.twitch.tv/26355202144-offset-1565.049-37.49999999999999-preview-86x45.jpg"}}],"_cursor":"Mw=="}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 28 Sep 2017 04:37:22 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - c06244f0f49504d1d6f2ee232dbdd881
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59cc7c82-7b9f961f697232d25dee4c3d
+    status: 200 OK
+    code: 200
