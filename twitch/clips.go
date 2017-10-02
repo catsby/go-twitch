@@ -2,6 +2,7 @@ package twitch
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"time"
 )
@@ -204,10 +205,14 @@ type GetFollowedClipsInput struct {
 }
 
 // Gets Followed clips
+// TODO/Note: I'm not sure how this api is supposed to return things, I'm
+// getting [] for a reply and I can't seem to "follow" clips right now. I don't
+// consider this endpoint of the SDK to "work"
 // Scope: user_read
 // See:
 //  - https://dev.twitch.tv/docs/v5/reference/clips#get-top-clips
 func (c *Client) GetFollowedClips(i *GetFollowedClipsInput) (*GetFollowedClipsOutput, error) {
+	log.Printf("[WARN] GetFollowedClips probably doesn't acually work")
 	resp, err := c.Get("/clips/followed", nil)
 
 	if err != nil {
