@@ -165,3 +165,59 @@ func (c *Client) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
 
 	return &o, nil
 }
+
+////////
+////////
+////////
+////////
+
+type pageable struct {
+	// Tells the server where to start fetching the next set of results, in a
+	// multi-page response.
+	Cursor string `mapstructure:"cursor"`
+
+	// Maximum number of most-recent objects to return. Default: 10. Maximum: 100.
+	Limit int `mapstructure:"limit"`
+
+	// The window of time to search for clips. Valid values: day, week, month,
+	// all. Default: week.
+	Period string `mapstructure:"period"`
+}
+
+// GetFollowedClipsOutput is the output of the GetFollowedClips function.
+type GetFollowedClipsOutput struct {
+	*pageable
+
+	Clips []*Clip `mapstructure:"clips"`
+}
+
+// GetFollowedClipsInput is the input to the GetFollowedClips function.
+type GetFollowedClipsInput struct {
+	*pageable
+
+	// Game name. (Game names can be retrieved with the Search Games endpoint.) If this is specified, top clips for only this game are returned; otherwise, top clips for all games are returned. If both channel and game are specified, game is ignored.
+	Game string
+	//   Comma-separated list of languages, which constrains the languages of videos returned. Examples: es, en,es,th. If no language is specified, all languages are returned. Default: "". Maximum: 28 languages.
+	Language string
+	//   If true, the clips returned are ordered by popularity; otherwise, by viewcount. Default: false.
+	Trending bool
+}
+
+// Gets Followed clips
+// Scope: user_read
+// See:
+//  - https://dev.twitch.tv/docs/v5/reference/clips#get-top-clips
+func (c *Client) GetFollowedClips(i *GetFollowedClipsInput) (*GetFollowedClipsOutput, error) {
+	resp, err := c.Get("/clips/followed", nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var o GetFollowedClipsOutput
+	if err := decodeJSON(&o, resp.Body); err != nil {
+		return nil, err
+	}
+
+	return &o, nil
+}

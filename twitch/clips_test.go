@@ -2,6 +2,7 @@ package twitch
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 	"testing"
 
@@ -177,5 +178,21 @@ func TestClip_Get_TopClips(t *testing.T) {
 			t.Fatalf("Expected to find (%d) slugs, but only found (%d)", len(slugs), foundCount)
 		}
 	}
+}
 
+func TestClip_Get_FollowedClips(t *testing.T) {
+	t.Parallel()
+
+	var err error
+
+	var output *GetFollowedClipsOutput
+	record(t, "clips/get_followed_clips", func(c *Client) {
+		// output, err = c.GetFollowedClips(tc.Input)
+		output, err = c.GetFollowedClips(&GetFollowedClipsInput{})
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	log.Printf("Output: %s", spew.Sdump(output))
 }
