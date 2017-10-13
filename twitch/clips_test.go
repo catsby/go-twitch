@@ -44,7 +44,7 @@ func TestClip_Get_basic(t *testing.T) {
 		Game:        "Heroes of the Storm",
 		Language:    "en",
 		Title:       "Bug-Abusing streamers bully a poor PTR player",
-		Views:       24109,
+		Views:       24118,
 		Duration:    46.333984,
 		Thumbnails: &Thumbnails{
 			Medium: "https://clips-media-assets.twitch.tv/26123917520-offset-25833.5-46.333333333333364-preview-480x272.jpg",
