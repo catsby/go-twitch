@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"time"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
 // VideoSort determine how video results are sorted
@@ -53,7 +55,7 @@ type GetChannelInput struct {
 // See:
 //  - https://dev.twitch.tv/docs/v5/reference/channels/#get-channel
 //  - https://dev.twitch.tv/docs/v5/reference/channels/#get-channel-by-id
-func (c *Client) GetChannel(i *GetChannelInput) (*GetChannelOutput, error) {
+func (k *Kraken) GetChannel(i *GetChannelInput) (*GetChannelOutput, error) {
 	path := "/channels/"
 	if i == nil || i.Id == 0 {
 		path = "/channel"
@@ -61,13 +63,13 @@ func (c *Client) GetChannel(i *GetChannelInput) (*GetChannelOutput, error) {
 		path = fmt.Sprintf("%s%d", path, i.Id)
 	}
 
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}
 
 	var o GetChannelOutput
-	if err := decodeJSON(&o.Channel, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&o.Channel, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -86,15 +88,15 @@ type GetChannelFollowersInput struct {
 }
 
 // GetChannelFollowers returns the full list of users following a channel
-func (c *Client) GetChannelFollowers(i *GetChannelFollowersInput) (*GetChannelFollowersOutput, error) {
+func (k *Kraken) GetChannelFollowers(i *GetChannelFollowersInput) (*GetChannelFollowersOutput, error) {
 	path := fmt.Sprintf("/channels/%d/follows", i.Id)
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}
 
 	var o GetChannelFollowersOutput
-	if err := decodeJSON(&o, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&o, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -139,7 +141,7 @@ type GetChannelVideosInput struct {
 }
 
 // GetChannelVideos returns the full list of users following a channel
-func (c *Client) GetChannelVideos(i *GetChannelVideosInput) (*GetChannelVideosOutput, error) {
+func (k *Kraken) GetChannelVideos(i *GetChannelVideosInput) (*GetChannelVideosOutput, error) {
 	path := fmt.Sprintf("/channels/%d/videos", i.Id)
 	ro := new(RequestOptions)
 	if i.Limit != 0 {
@@ -154,13 +156,13 @@ func (c *Client) GetChannelVideos(i *GetChannelVideosInput) (*GetChannelVideosOu
 		}
 	}
 
-	resp, err := c.Get(path, ro)
+	resp, err := k.Get(path, ro)
 	if err != nil {
 		return nil, err
 	}
 
 	var o GetChannelVideosOutput
-	if err := decodeJSON(&o, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&o, resp.Body); err != nil {
 		return nil, err
 	}
 

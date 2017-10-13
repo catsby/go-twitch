@@ -32,7 +32,7 @@ type GetUserOutput struct {
 
 // GetUser returns information on the user. With no GetUserInput specified, gets
 // users info scoped to the access token
-func (c *Client) GetUser(i *GetUserInput) (*GetUserOutput, error) {
+func (k *Kraken) GetUser(i *GetUserInput) (*GetUserOutput, error) {
 	path := "/users/"
 	if i == nil || i.Id == 0 {
 		path = "/user"
@@ -40,7 +40,7 @@ func (c *Client) GetUser(i *GetUserInput) (*GetUserOutput, error) {
 		path = fmt.Sprintf("%s%d", path, i.Id)
 	}
 
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -71,14 +71,14 @@ type GetUserFollowsOutput struct {
 }
 
 // GetUserFollows returns information on the channels a user is following.
-func (c *Client) GetUserFollows(i *GetUserFollowsInput) (*GetUserFollowsOutput, error) {
+func (k *Kraken) GetUserFollows(i *GetUserFollowsInput) (*GetUserFollowsOutput, error) {
 	if i == nil || i.Id == 0 {
 		return nil, fmt.Errorf("GetUserFollows requires a valid GetUserFollowsInput")
 	}
 
 	path := fmt.Sprintf("/users/%d/follows/channels", i.Id)
 
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}

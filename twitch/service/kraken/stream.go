@@ -54,9 +54,9 @@ type GetFollowedStreamsOutput struct {
 
 // GetFollowedStreams returns a list of online streams a user is following,
 // based on a specified OAuth token.
-func (c *Client) GetFollowedStreams(i *GetFollowedStreamsInput) (*GetFollowedStreamsOutput, error) {
+func (k *Kraken) GetFollowedStreams(i *GetFollowedStreamsInput) (*GetFollowedStreamsOutput, error) {
 	path := fmt.Sprintf("/streams/followed")
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -83,12 +83,12 @@ type GetStreamOutput struct {
 }
 
 // GetStream returns the full list of all versions of the given service.
-func (c *Client) GetStream(i *GetStreamInput) (*GetStreamOutput, *http.Response, error) {
+func (k *Kraken) GetStream(i *GetStreamInput) (*GetStreamOutput, *http.Response, error) {
 	if i == nil || i.ChannelId == 0 {
 		return nil, nil, errors.New("Invalid GetStreamInput: ChannelId is required and cannot be zero")
 	}
 	path := fmt.Sprintf("/streams/%d", i.ChannelId)
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -134,7 +134,7 @@ type GetLiveStreamsOutput struct {
 }
 
 // GetStream returns the full list of all versions of the given service.
-func (c *Client) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, error) {
+func (k *Kraken) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, error) {
 	path := "/streams"
 	ro := new(RequestOptions)
 	// for _,s:=range i.
@@ -143,7 +143,7 @@ func (c *Client) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, 
 			"game": i.Game,
 		}
 	}
-	resp, err := c.Get(path, ro)
+	resp, err := k.Get(path, ro)
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +169,7 @@ type GetStreamSummaryOutput struct {
 }
 
 // GetStream returns the full list of all versions of the given service.
-func (c *Client) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOutput, error) {
+func (k *Kraken) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOutput, error) {
 	path := "/streams/summary"
 	ro := new(RequestOptions)
 	// for _,s:=range i.
@@ -178,7 +178,7 @@ func (c *Client) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOu
 			"game": i.Game,
 		}
 	}
-	resp, err := c.Get(path, ro)
+	resp, err := k.Get(path, ro)
 	if err != nil {
 		return nil, err
 	}
@@ -221,9 +221,9 @@ type GetFeaturedStreamsOutput struct {
 }
 
 // GetFeaturedStreams returns the full list of all versions of the given service.
-func (c *Client) GetFeaturedStreams(i *GetFeaturedStreamsInput) (*GetFeaturedStreamsOutput, error) {
+func (k *Kraken) GetFeaturedStreams(i *GetFeaturedStreamsInput) (*GetFeaturedStreamsOutput, error) {
 	path := fmt.Sprintf("/streams/featured")
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}

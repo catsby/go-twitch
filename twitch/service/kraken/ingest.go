@@ -22,8 +22,8 @@ type GetIngestServerListOutput struct {
 
 // GetIngestServerList returns a list of servers for ingesting streams.
 // See https://dev.twitch.tv/docs/v5/reference/ingests/#get-ingest-server-list
-func (c *Client) GetIngestServerList(_ *GetIngestServerListInput) (*GetIngestServerListOutput, error) {
-	resp, err := c.Get("ingests", nil)
+func (k *Kraken) GetIngestServerList(_ *GetIngestServerListInput) (*GetIngestServerListOutput, error) {
+	resp, err := k.Get("ingests", nil)
 	if err != nil {
 		return nil, err
 	}

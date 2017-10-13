@@ -1,4 +1,4 @@
-package kraken
+package twitch
 
 import (
 	"bytes"

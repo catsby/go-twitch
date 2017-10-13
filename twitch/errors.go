@@ -1,4 +1,4 @@
-package kraken
+package twitch
 
 import (
 	"bytes"
@@ -81,7 +81,7 @@ type HTTPError struct {
 func NewHTTPError(resp *http.Response) *HTTPError {
 	var e HTTPError
 	if resp.Body != nil {
-		decodeJSON(&e, resp.Body)
+		DecodeJSON(&e, resp.Body)
 	}
 	e.StatusCode = resp.StatusCode
 	return &e

@@ -1,7 +1,7 @@
 package kraken
 
 import (
-	twitch "github.com/catsby/go-twitch"
+	twitch "github.com/catsby/go-twitch/twitch"
 )
 
 type Kraken struct {

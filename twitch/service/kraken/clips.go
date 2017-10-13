@@ -78,13 +78,13 @@ type GetClipInput struct {
 // Gets details about a specified clip
 // See:
 //  - https://dev.twitch.tv/docs/v5/reference/clips#get-clip
-func (c *Client) GetClip(i *GetClipInput) (*GetClipOutput, error) {
+func (k *Kraken) GetClip(i *GetClipInput) (*GetClipOutput, error) {
 	if i == nil || i.Slug == "" {
 		return nil, fmt.Errorf("[ERR] No Slug for GetClip")
 	}
 	path := fmt.Sprintf("/%s/%s", "clips", i.Slug)
 
-	resp, err := c.Get(path, nil)
+	resp, err := k.Get(path, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +124,7 @@ type GetTopClipsInput struct {
 // Gets top clips
 // See:
 //  - https://dev.twitch.tv/docs/v5/reference/clips#get-top-clips
-func (c *Client) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
+func (k *Kraken) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
 	path := fmt.Sprintf("/clips/top")
 	params := map[string]string{
 		"channel":  i.Channel,
@@ -153,7 +153,7 @@ func (c *Client) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
 		Params: params,
 	}
 
-	resp, err := c.Get(path, &ro)
+	resp, err := k.Get(path, &ro)
 
 	if err != nil {
 		return nil, err
@@ -211,9 +211,9 @@ type GetFollowedClipsInput struct {
 // Scope: user_read
 // See:
 //  - https://dev.twitch.tv/docs/v5/reference/clips#get-top-clips
-func (c *Client) GetFollowedClips(i *GetFollowedClipsInput) (*GetFollowedClipsOutput, error) {
+func (k *Kraken) GetFollowedClips(i *GetFollowedClipsInput) (*GetFollowedClipsOutput, error) {
 	log.Printf("[WARN] GetFollowedClips probably doesn't acually work")
-	resp, err := c.Get("/clips/followed", nil)
+	resp, err := k.Get("/clips/followed", nil)
 
 	if err != nil {
 		return nil, err
