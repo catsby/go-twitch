@@ -30,7 +30,7 @@ func TestChannel_Get_basic(t *testing.T) {
 		BroadcasterLanguage: "en",
 		Description:         "Dedicated to creating the most epic entertainment experiences... ever.",
 		DisplayName:         "Blizzard",
-		Followers:           238514,
+		Followers:           239225,
 		Game:                "Gamescom 2017",
 		HTMLURL:             "https://www.twitch.tv/blizzard",
 		Language:            "en",
@@ -38,7 +38,7 @@ func TestChannel_Get_basic(t *testing.T) {
 		Name:                "blizzard",
 		Mature:              false,
 		Status:              "Blizzard at gamescom",
-		Views:               8797750,
+		Views:               8802420,
 	}
 
 	cases := []struct {
@@ -101,7 +101,7 @@ func TestChannel_GetFollows_basic(t *testing.T) {
 	}
 
 	expectedOutput := &GetChannelFollowersOutput{
-		Total: 27821,
+		Total: 27863,
 	}
 
 	if output.Total != expectedOutput.Total {
