@@ -77,13 +77,7 @@ func TestStream_GetLiveStreams(t *testing.T) {
 			Path:        "streams/live",
 			Req:         &GetLiveStreamsInput{},
 			StreamCount: 25,
-			TotalCount:  27042,
-		},
-		{
-			Path:        "streams/live",
-			Req:         &GetLiveStreamsInput{},
-			StreamCount: 25,
-			TotalCount:  27042,
+			TotalCount:  22940,
 		},
 	}
 
