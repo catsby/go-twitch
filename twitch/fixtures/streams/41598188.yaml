@@ -1,0 +1,48 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Accept:
+      - application/vnd.twitchtv.v5+json
+      Authorization:
+      - OAuth xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9.1)
+    url: https://api.twitch.tv/kraken/streams/41598188
+    method: GET
+  response:
+    body: '{"stream":{"_id":26473514608,"game":"Heroes of the Storm","broadcast_platform":"live","community_id":"","community_ids":[],"viewers":1874,"video_height":1080,"average_fps":60,"delay":0,"created_at":"2017-10-13T11:15:50Z","is_playlist":false,"stream_type":"live","preview":{"small":"https://static-cdn.jtvnw.net/previews-ttv/live_user_mewnfarez-80x45.jpg","medium":"https://static-cdn.jtvnw.net/previews-ttv/live_user_mewnfarez-320x180.jpg","large":"https://static-cdn.jtvnw.net/previews-ttv/live_user_mewnfarez-640x360.jpg","template":"https://static-cdn.jtvnw.net/previews-ttv/live_user_mewnfarez-{width}x{height}.jpg"},"channel":{"mature":false,"status":"my
+      discord open to everyone https://discord.gg/d32eBA","broadcaster_language":"en","display_name":"mewnfarez","game":"Heroes
+      of the Storm","language":"en","_id":41598188,"name":"mewnfarez","created_at":"2013-03-22T19:56:52.277886Z","updated_at":"2017-10-13T14:34:28.116226Z","partner":true,"logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-profile_image-2af79e1168fdde0d-300x300.jpeg","video_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-channel_offline_image-7d4587893b5f3863-1920x1080.png","profile_banner":"https://static-cdn.jtvnw.net/jtv_user_pictures/mewnfarez-profile_banner-6de5ce3b6e5ca873-480.png","profile_banner_background_color":"#5287a5","url":"https://www.twitch.tv/mewnfarez","views":4428884,"followers":58689,"broadcaster_type":"","description":"i
+      like to play video games"}}}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 13 Oct 2017 14:53:34 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Server:
+      - nginx
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - f2c43d2e4ce893c1b3b7e9dad4ee09a6
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-59e0d36e-1b144cb80c971a2c1d709094
+    status: 200 OK
+    code: 200

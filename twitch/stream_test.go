@@ -20,7 +20,7 @@ func TestStream_GetFollowed(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedOutput := 0
+	expectedOutput := 1
 	if output.Total != expectedOutput {
 		t.Fatalf("Expectec output.Total to be (%d), got (%d)", expectedOutput, output.Total)
 	}
@@ -44,10 +44,9 @@ func TestStream_GetStream_basic(t *testing.T) {
 	// Get
 	var output *GetStreamOutput
 	var resp *http.Response
-	// record(t, "streams/60900813", func(c *Client) {
-	record(t, "streams/60967507", func(c *Client) {
+	record(t, "streams/41598188", func(c *Client) {
 		output, resp, err = c.GetStream(&GetStreamInput{
-			ChannelId: 60967507,
+			ChannelId: 41598188,
 		})
 	})
 	if err != nil {
@@ -120,12 +119,12 @@ func TestStream_GetStream_Summary(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedChannels := 1158
+	expectedChannels := 864
 	if output.Channels != expectedChannels {
 		t.Fatalf("Expectec output.Channels to be (%d), got (%d)", expectedChannels, output.Channels)
 	}
 
-	expectedViewers := 23809
+	expectedViewers := 30316
 	if output.Viewers != expectedViewers {
 		t.Fatalf("Expectec output.Viewers to be (%d), got (%d)", expectedViewers, output.Viewers)
 	}
@@ -146,15 +145,16 @@ func TestStream_GetFeatured(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedTotal := 22
+	expectedTotal := 25
 	if output.Total != expectedTotal {
 		t.Fatalf("Expectec output.Total to be (%d), got: (%d)", expectedTotal, output.Total)
 	}
 
 	featuredStream := output.FeaturedStreams[0]
 
-	if featuredStream.Stream.Game != "FINAL FANTASY XIV Online" {
-		t.Fatalf("Expected game to be 'FINAL FANTASY XIV Online', got: (%s)", featuredStream.Stream.Game)
+	expectedGame := "Dead by Daylight"
+	if featuredStream.Stream.Game != expectedGame {
+		t.Fatalf("Expected game to be (%s), got: (%s)", expectedGame, featuredStream.Stream.Game)
 	}
 
 	if featuredStream.Priority != 5 {
