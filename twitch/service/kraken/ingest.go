@@ -1,4 +1,4 @@
-package twitch
+package kraken
 
 // The Twitch ingesting system is the first stop for a broadcast stream. An
 // ingest server receives your stream, and the ingesting system authorizes and

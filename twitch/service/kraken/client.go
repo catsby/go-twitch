@@ -1,4 +1,4 @@
-package twitch
+package kraken
 
 // This file was lifted and heavily modified from github.com/catsby/go-twitch
 
