@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 	"testing"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
 func TestStream_GetFollowed(t *testing.T) {
@@ -13,7 +15,7 @@ func TestStream_GetFollowed(t *testing.T) {
 
 	// Get
 	var output *GetFollowedStreamsOutput
-	record(t, "streams/followed", func(c *Client) {
+	record(t, "streams/followed", func(c *twitch.Client) {
 		output, err = c.GetFollowedStreams(&GetFollowedStreamsInput{})
 	})
 	if err != nil {
@@ -44,7 +46,7 @@ func TestStream_GetStream_basic(t *testing.T) {
 	// Get
 	var output *GetStreamOutput
 	var resp *http.Response
-	record(t, "streams/41598188", func(c *Client) {
+	record(t, "streams/41598188", func(c *twitch.Client) {
 		output, resp, err = c.GetStream(&GetStreamInput{
 			ChannelId: 41598188,
 		})
@@ -110,7 +112,7 @@ func TestStream_GetStream_Summary(t *testing.T) {
 
 	// Get
 	var output *GetStreamSummaryOutput
-	record(t, "stream/summary/overwatch_summary", func(c *Client) {
+	record(t, "stream/summary/overwatch_summary", func(c *twitch.Client) {
 		output, err = c.GetStreamSummary(&GetStreamSummaryInput{
 			Game: "Overwatch",
 		})
@@ -138,7 +140,7 @@ func TestStream_GetFeatured(t *testing.T) {
 
 	// Get
 	var output *GetFeaturedStreamsOutput
-	record(t, "streams/featured", func(c *Client) {
+	record(t, "streams/featured", func(c *twitch.Client) {
 		output, err = c.GetFeaturedStreams(&GetFeaturedStreamsInput{})
 	})
 	if err != nil {

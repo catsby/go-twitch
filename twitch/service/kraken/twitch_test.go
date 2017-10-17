@@ -5,10 +5,11 @@ import (
 	"os"
 	"testing"
 
+	"github.com/catsby/go-twitch/twitch"
 	"github.com/dnaeon/go-vcr/recorder"
 )
 
-func record(t *testing.T, fixture string, f func(*Client)) {
+func record(t *testing.T, fixture string, f func(*twitch.Client)) {
 	modeDisabledEnv := os.Getenv("RECORD_DISABLE")
 	mode := recorder.ModeReplaying
 	if modeDisabledEnv == "true" {
@@ -26,7 +27,7 @@ func record(t *testing.T, fixture string, f func(*Client)) {
 		}
 	}()
 
-	client := DefaultClient()
+	client := twitch.DefaultClient()
 	client.HTTPClient.Transport = r
 
 	f(client)

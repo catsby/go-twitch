@@ -4,6 +4,6 @@ import (
 	twitch "github.com/catsby/go-twitch/twitch"
 )
 
-type Kraken struct {
+type Client struct {
 	*twitch.Client
 }

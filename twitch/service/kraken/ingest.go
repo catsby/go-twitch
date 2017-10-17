@@ -1,5 +1,7 @@
 package kraken
 
+import "github.com/catsby/go-twitch/twitch"
+
 // The Twitch ingesting system is the first stop for a broadcast stream. An
 // ingest server receives your stream, and the ingesting system authorizes and
 // registers streams, then prepares them for viewers.
@@ -29,7 +31,7 @@ func (k *Kraken) GetIngestServerList(_ *GetIngestServerListInput) (*GetIngestSer
 	}
 
 	var out GetIngestServerListOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, err
 	}
 

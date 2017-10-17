@@ -3,6 +3,8 @@ package kraken
 import (
 	"fmt"
 	"time"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
 // User represents a user/streamer
@@ -46,7 +48,7 @@ func (k *Kraken) GetUser(i *GetUserInput) (*GetUserOutput, error) {
 	}
 
 	var out GetUserOutput
-	if err := decodeJSON(&out.User, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out.User, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -84,7 +86,7 @@ func (k *Kraken) GetUserFollows(i *GetUserFollowsInput) (*GetUserFollowsOutput, 
 	}
 
 	var out GetUserFollowsOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, err
 	}
 

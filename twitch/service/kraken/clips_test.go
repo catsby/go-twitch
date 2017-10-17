@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/catsby/go-twitch/twitch"
 	"github.com/davecgh/go-spew/spew"
 )
 
@@ -73,7 +74,7 @@ func TestClip_Get_basic(t *testing.T) {
 		// Get
 		var output *GetClipOutput
 		// c := DefaultClient()
-		record(t, fmt.Sprintf("clips/get_%s", tc.Label), func(c *Client) {
+		record(t, fmt.Sprintf("clips/get_%s", tc.Label), func(c *twitch.Client) {
 			output, err = c.GetClip(tc.Input)
 		})
 		if err != nil {
@@ -138,7 +139,7 @@ func TestClip_Get_TopClips(t *testing.T) {
 		var err error
 
 		var output *GetTopClipsOutput
-		record(t, fmt.Sprintf("clips/get_top_clips%s", tc.Label), func(c *Client) {
+		record(t, fmt.Sprintf("clips/get_top_clips%s", tc.Label), func(c *twitch.Client) {
 			output, err = c.GetTopClips(tc.Input)
 		})
 		if err != nil {
@@ -187,7 +188,7 @@ func TestClip_Get_FollowedClips(t *testing.T) {
 	var err error
 
 	var output *GetFollowedClipsOutput
-	record(t, "clips/get_followed_clips", func(c *Client) {
+	record(t, "clips/get_followed_clips", func(c *twitch.Client) {
 		// output, err = c.GetFollowedClips(tc.Input)
 		output, err = c.GetFollowedClips(&GetFollowedClipsInput{})
 	})

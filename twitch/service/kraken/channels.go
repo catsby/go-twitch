@@ -143,7 +143,7 @@ type GetChannelVideosInput struct {
 // GetChannelVideos returns the full list of users following a channel
 func (k *Kraken) GetChannelVideos(i *GetChannelVideosInput) (*GetChannelVideosOutput, error) {
 	path := fmt.Sprintf("/channels/%d/videos", i.Id)
-	ro := new(RequestOptions)
+	ro := new(twitch.RequestOptions)
 	if i.Limit != 0 {
 		ro.Params = map[string]string{
 			"limit": strconv.Itoa(i.Limit),

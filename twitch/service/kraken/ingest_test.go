@@ -3,6 +3,8 @@ package kraken
 import (
 	"reflect"
 	"testing"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
 func TestIngest_basic(t *testing.T) {
@@ -12,7 +14,7 @@ func TestIngest_basic(t *testing.T) {
 
 	// Get
 	var output *GetIngestServerListOutput
-	record(t, "ingests/get", func(c *Client) {
+	record(t, "ingests/get", func(c *twitch.Client) {
 		output, err = c.GetIngestServerList(nil)
 	})
 	if err != nil {

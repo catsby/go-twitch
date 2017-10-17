@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
 // StreamType is the type of cache action.
@@ -62,7 +64,7 @@ func (k *Kraken) GetFollowedStreams(i *GetFollowedStreamsInput) (*GetFollowedStr
 	}
 
 	var out GetFollowedStreamsOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -94,7 +96,7 @@ func (k *Kraken) GetStream(i *GetStreamInput) (*GetStreamOutput, *http.Response,
 	}
 
 	var out GetStreamOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, resp, err
 	}
 
@@ -136,7 +138,7 @@ type GetLiveStreamsOutput struct {
 // GetStream returns the full list of all versions of the given service.
 func (k *Kraken) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, error) {
 	path := "/streams"
-	ro := new(RequestOptions)
+	ro := new(twitch.RequestOptions)
 	// for _,s:=range i.
 	if i.Game != "" {
 		ro.Params = map[string]string{
@@ -149,7 +151,7 @@ func (k *Kraken) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, 
 	}
 
 	var out GetLiveStreamsOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -171,7 +173,7 @@ type GetStreamSummaryOutput struct {
 // GetStream returns the full list of all versions of the given service.
 func (k *Kraken) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOutput, error) {
 	path := "/streams/summary"
-	ro := new(RequestOptions)
+	ro := new(twitch.RequestOptions)
 	// for _,s:=range i.
 	if i.Game != "" {
 		ro.Params = map[string]string{
@@ -184,7 +186,7 @@ func (k *Kraken) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOu
 	}
 
 	var out GetStreamSummaryOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -229,7 +231,7 @@ func (k *Kraken) GetFeaturedStreams(i *GetFeaturedStreamsInput) (*GetFeaturedStr
 	}
 
 	var out GetFeaturedStreamsOutput
-	if err := decodeJSON(&out, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&out, resp.Body); err != nil {
 		return nil, err
 	}
 

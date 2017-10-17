@@ -5,6 +5,8 @@ import (
 	"log"
 	"strconv"
 	"time"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
 // Version represents a distinct configuration version.
@@ -90,7 +92,7 @@ func (k *Kraken) GetClip(i *GetClipInput) (*GetClipOutput, error) {
 	}
 
 	var o GetClipOutput
-	if err := decodeJSON(&o.Clip, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&o.Clip, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -136,7 +138,7 @@ func (k *Kraken) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
 		"trending": strconv.FormatBool(i.Trending),
 	}
 
-	// TODO should refactor into a method that returns a RequestOptions struct for
+	// TODO should refactor into a method that returns a twitch.RequestOptions struct for
 	// a given GetTopClipsInput
 	// strip out any empty parameters
 	for k, v := range params {
@@ -149,7 +151,7 @@ func (k *Kraken) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
 		}
 	}
 
-	ro := RequestOptions{
+	ro := twitch.RequestOptions{
 		Params: params,
 	}
 
@@ -160,7 +162,7 @@ func (k *Kraken) GetTopClips(i *GetTopClipsInput) (*GetTopClipsOutput, error) {
 	}
 
 	var o GetTopClipsOutput
-	if err := decodeJSON(&o, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&o, resp.Body); err != nil {
 		return nil, err
 	}
 
@@ -220,7 +222,7 @@ func (k *Kraken) GetFollowedClips(i *GetFollowedClipsInput) (*GetFollowedClipsOu
 	}
 
 	var o GetFollowedClipsOutput
-	if err := decodeJSON(&o, resp.Body); err != nil {
+	if err := twitch.DecodeJSON(&o, resp.Body); err != nil {
 		return nil, err
 	}
 
