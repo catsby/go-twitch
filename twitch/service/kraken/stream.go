@@ -56,7 +56,7 @@ type GetFollowedStreamsOutput struct {
 
 // GetFollowedStreams returns a list of online streams a user is following,
 // based on a specified OAuth token.
-func (k *Kraken) GetFollowedStreams(i *GetFollowedStreamsInput) (*GetFollowedStreamsOutput, error) {
+func (k *Client) GetFollowedStreams(i *GetFollowedStreamsInput) (*GetFollowedStreamsOutput, error) {
 	path := fmt.Sprintf("/streams/followed")
 	resp, err := k.Get(path, nil)
 	if err != nil {
@@ -85,7 +85,7 @@ type GetStreamOutput struct {
 }
 
 // GetStream returns the full list of all versions of the given service.
-func (k *Kraken) GetStream(i *GetStreamInput) (*GetStreamOutput, *http.Response, error) {
+func (k *Client) GetStream(i *GetStreamInput) (*GetStreamOutput, *http.Response, error) {
 	if i == nil || i.ChannelId == 0 {
 		return nil, nil, errors.New("Invalid GetStreamInput: ChannelId is required and cannot be zero")
 	}
@@ -136,7 +136,7 @@ type GetLiveStreamsOutput struct {
 }
 
 // GetStream returns the full list of all versions of the given service.
-func (k *Kraken) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, error) {
+func (k *Client) GetLiveStreams(i *GetLiveStreamsInput) (*GetLiveStreamsOutput, error) {
 	path := "/streams"
 	ro := new(twitch.RequestOptions)
 	// for _,s:=range i.
@@ -171,7 +171,7 @@ type GetStreamSummaryOutput struct {
 }
 
 // GetStream returns the full list of all versions of the given service.
-func (k *Kraken) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOutput, error) {
+func (k *Client) GetStreamSummary(i *GetStreamSummaryInput) (*GetStreamSummaryOutput, error) {
 	path := "/streams/summary"
 	ro := new(twitch.RequestOptions)
 	// for _,s:=range i.
@@ -223,7 +223,7 @@ type GetFeaturedStreamsOutput struct {
 }
 
 // GetFeaturedStreams returns the full list of all versions of the given service.
-func (k *Kraken) GetFeaturedStreams(i *GetFeaturedStreamsInput) (*GetFeaturedStreamsOutput, error) {
+func (k *Client) GetFeaturedStreams(i *GetFeaturedStreamsInput) (*GetFeaturedStreamsOutput, error) {
 	path := fmt.Sprintf("/streams/featured")
 	resp, err := k.Get(path, nil)
 	if err != nil {

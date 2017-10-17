@@ -2,9 +2,7 @@ package kraken
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"net/url"
 	"os"
@@ -13,29 +11,26 @@ import (
 	"github.com/ajg/form"
 	twitch "github.com/catsby/go-twitch/twitch"
 	cleanhttp "github.com/hashicorp/go-cleanhttp"
-	"github.com/mitchellh/mapstructure"
 )
 
 type Client struct {
-	*twitch.Config
+	config *twitch.Config
 }
 
 // DefaultClient instantiates a new Twitch API client. This function requires
 // the environment variables `TWITCH_ACCESS_TOKEN` and `TWITCH_CLIENT_ID` to be
 // set and contain valid access token and client id, respectively, to
 // authenticate with Twitch.
-func DefaultClient(c *twitch.Config) *Client {
+func DefaultClient() *Client {
 	// TODO not even really used right now you should fix this, it's unused
 	// because I'm refactoring
-	// if config == nil {
-	// 	config = &twitch.Config{}
-	// }
-	client, err := NewClient(
-		os.Getenv(ClientIdEnvVar),
-		os.Getenv(AccessTokenEnvVar),
-		DefaultEndpoint,
-		nil,
-	)
+	config := twitch.Config{
+		ClientId:    os.Getenv(twitch.ClientIdEnvVar),
+		AccessToken: os.Getenv(twitch.AccessTokenEnvVar),
+		Endpoint:    twitch.DefaultEndpoint,
+		HTTPClient:  nil,
+	}
+	client, err := NewClient(&config)
 	if err != nil {
 		panic(err)
 	}
@@ -48,12 +43,14 @@ func DefaultClient(c *twitch.Config) *Client {
 //
 // Creating an access token is not yet supported by this libary
 // TODO: Support creating an access token
-func NewClient(clientId, accessToken, endpoint string, client *http.Client) (*Client, error) {
-	if accessToken == "" {
+func NewClient(config *twitch.Config) (*Client, error) {
+	if config.AccessToken == "" {
 		return nil, fmt.Errorf("Access Token not specified")
 	}
 
-	c := &Client{accessToken: accessToken, clientId: clientId, Endpoint: endpoint, HTTPClient: client}
+	c := &Client{
+		config: config,
+	}
 	return c.init()
 }
 
@@ -162,31 +159,4 @@ func checkResp(resp *http.Response, err error) (*http.Response, error) {
 	default:
 		return resp, NewHTTPError(resp)
 	}
-}
-
-// decodeJSON is used to decode an HTTP response body into an interface as JSON.
-func DecodeJSON(out interface{}, body io.ReadCloser) error {
-	defer body.Close()
-
-	var parsed interface{}
-	dec := json.NewDecoder(body)
-	if err := dec.Decode(&parsed); err != nil {
-		return err
-	}
-
-	decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{
-		DecodeHook: mapstructure.ComposeDecodeHookFunc(
-			mapToHTTPHeaderHookFunc(),
-			stringToTimeHookFunc(),
-		),
-		WeaklyTypedInput: true,
-		Result:           out,
-	})
-	if err != nil {
-		return err
-	}
-
-	// log.Printf("\nWhat is parsed: \n\n%s\n---\n", spew.Sdump(parsed))
-	// log.Printf("\nWhat is out: \n\n%s\n---\n", spew.Sdump(out))
-	return decoder.Decode(parsed.(map[string]interface{}))
 }

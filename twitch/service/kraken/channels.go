@@ -55,7 +55,7 @@ type GetChannelInput struct {
 // See:
 //  - https://dev.twitch.tv/docs/v5/reference/channels/#get-channel
 //  - https://dev.twitch.tv/docs/v5/reference/channels/#get-channel-by-id
-func (k *Kraken) GetChannel(i *GetChannelInput) (*GetChannelOutput, error) {
+func (k *Client) GetChannel(i *GetChannelInput) (*GetChannelOutput, error) {
 	path := "/channels/"
 	if i == nil || i.Id == 0 {
 		path = "/channel"
@@ -88,7 +88,7 @@ type GetChannelFollowersInput struct {
 }
 
 // GetChannelFollowers returns the full list of users following a channel
-func (k *Kraken) GetChannelFollowers(i *GetChannelFollowersInput) (*GetChannelFollowersOutput, error) {
+func (k *Client) GetChannelFollowers(i *GetChannelFollowersInput) (*GetChannelFollowersOutput, error) {
 	path := fmt.Sprintf("/channels/%d/follows", i.Id)
 	resp, err := k.Get(path, nil)
 	if err != nil {
@@ -141,7 +141,7 @@ type GetChannelVideosInput struct {
 }
 
 // GetChannelVideos returns the full list of users following a channel
-func (k *Kraken) GetChannelVideos(i *GetChannelVideosInput) (*GetChannelVideosOutput, error) {
+func (k *Client) GetChannelVideos(i *GetChannelVideosInput) (*GetChannelVideosOutput, error) {
 	path := fmt.Sprintf("/channels/%d/videos", i.Id)
 	ro := new(twitch.RequestOptions)
 	if i.Limit != 0 {

@@ -34,7 +34,7 @@ type GetUserOutput struct {
 
 // GetUser returns information on the user. With no GetUserInput specified, gets
 // users info scoped to the access token
-func (k *Kraken) GetUser(i *GetUserInput) (*GetUserOutput, error) {
+func (k *Client) GetUser(i *GetUserInput) (*GetUserOutput, error) {
 	path := "/users/"
 	if i == nil || i.Id == 0 {
 		path = "/user"
@@ -73,7 +73,7 @@ type GetUserFollowsOutput struct {
 }
 
 // GetUserFollows returns information on the channels a user is following.
-func (k *Kraken) GetUserFollows(i *GetUserFollowsInput) (*GetUserFollowsOutput, error) {
+func (k *Client) GetUserFollows(i *GetUserFollowsInput) (*GetUserFollowsOutput, error) {
 	if i == nil || i.Id == 0 {
 		return nil, fmt.Errorf("GetUserFollows requires a valid GetUserFollowsInput")
 	}
