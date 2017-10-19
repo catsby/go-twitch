@@ -5,7 +5,6 @@ package twitch
 import (
 	"fmt"
 	"net/http"
-	"net/url"
 	"runtime"
 )
 
@@ -16,22 +15,6 @@ import (
 //
 // See:
 // - https://dev.twitch.tv/docs/api
-
-// AccessTokenEnvVar is the name of the environment variable where the Twitch API
-// key should be read from.
-// ClientIdEnvVar is the name of the environment variable the client id should
-// be read from.
-const AccessTokenEnvVar = "TWITCH_ACCESS_TOKEN"
-
-// Probably not needed, but offered
-const ClientIdEnvVar = "TWITCH_CLIENT_ID"
-
-// Not used yet
-const ClientSecretEnvVar = "TWITCH_CLIENT_SECRET"
-
-// AccessTokenHeader is the name of the header that contains the Twitch API key.
-const AccessTokenHeader = "Authorization"
-const ClientIdHeader = "Client-ID"
 
 // DefaultEndpoint is the default endpoint for Twitch
 const KrakenEndpoint = "https://api.twitch.tv/kraken/"
@@ -65,10 +48,6 @@ type Config struct {
 	//   https://dev.twitch.tv/docs/v5/guides/authentication/#registration
 	// Note: probably not needed for general API consumption
 	ClientId string
-
-	// url is the parsed URL from Address
-	// ??
-	url *url.URL
 }
 
 // DefaultClient instantiates a new Twitch API client for talking to the new

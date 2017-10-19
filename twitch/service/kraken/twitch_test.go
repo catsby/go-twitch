@@ -7,9 +7,10 @@ import (
 
 	"github.com/catsby/go-twitch/twitch"
 	"github.com/dnaeon/go-vcr/recorder"
+	cleanhttp "github.com/hashicorp/go-cleanhttp"
 )
 
-func record(t *testing.T, fixture string, f func(*twitch.Client)) {
+func recordKraken(t *testing.T, fixture string, f func(*twitch.Client)) {
 	modeDisabledEnv := os.Getenv("RECORD_DISABLE")
 	mode := recorder.ModeReplaying
 	if modeDisabledEnv == "true" {
@@ -27,8 +28,12 @@ func record(t *testing.T, fixture string, f func(*twitch.Client)) {
 		}
 	}()
 
-	client := twitch.DefaultClient()
-	client.HTTPClient.Transport = r
+	config := twitch.Config{
+		HTTPClient: cleanhttp.DefaultClient(),
+	}
+	config.HTTPClient.Transport = r
+
+	client := DefaultClient(&config)
 
 	f(client)
 }

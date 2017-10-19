@@ -13,27 +13,71 @@ import (
 	cleanhttp "github.com/hashicorp/go-cleanhttp"
 )
 
+// AccessTokenEnvVar is the name of the environment variable where the Twitch API
+// key should be read from.
+// ClientIdEnvVar is the name of the environment variable the client id should
+// be read from.
+const AccessTokenEnvVar = "TWITCH_ACCESS_TOKEN"
+
+// Probably not needed, but offered
+const ClientIdEnvVar = "TWITCH_CLIENT_ID"
+
+// Not used yet
+const ClientSecretEnvVar = "TWITCH_CLIENT_SECRET"
+
+// AccessTokenHeader is the name of the header that contains the Twitch API key.
+const AccessTokenHeader = "Authorization"
+const ClientIdHeader = "Client-ID"
+
 type Client struct {
-	config *twitch.Config
+	Config *twitch.Config
+
+	// HTTPClient is the HTTP client to use. If one is not provided, a default
+	// client will be used.
+	httpClient *http.Client
+
+	// accessToken is the Twitch API key to authenticate requests.
+	accessToken string
+
+	// clientId is the Twitch Application Client ID to authenticate requests.
+	// Register your application here:
+	//   https://dev.twitch.tv/docs/v5/guides/authentication/#registration
+	// Note: probably not needed for general API consumption
+	clientId string
+
+	// url is the parsed URL from Address
+	// ??
+	url *url.URL
 }
+
+// type Client twitch.Config
 
 // DefaultClient instantiates a new Twitch API client. This function requires
 // the environment variables `TWITCH_ACCESS_TOKEN` and `TWITCH_CLIENT_ID` to be
 // set and contain valid access token and client id, respectively, to
 // authenticate with Twitch.
-func DefaultClient() *Client {
+func DefaultClient(config *twitch.Config) *Client {
 	// TODO not even really used right now you should fix this, it's unused
 	// because I'm refactoring
-	config := twitch.Config{
-		ClientId:    os.Getenv(twitch.ClientIdEnvVar),
-		AccessToken: os.Getenv(twitch.AccessTokenEnvVar),
-		Endpoint:    twitch.DefaultEndpoint,
-		HTTPClient:  nil,
+	if config == nil {
+		config = &twitch.Config{}
 	}
-	client, err := NewClient(&config)
+
+	if config.ClientId == "" {
+		config.ClientId = os.Getenv(ClientIdEnvVar)
+	}
+	if config.AccessToken == "" {
+		config.AccessToken = os.Getenv(AccessTokenEnvVar)
+	}
+	if config.Endpoint == "" {
+		config.Endpoint = twitch.DefaultEndpoint
+	}
+
+	client, err := NewClient(config)
 	if err != nil {
 		panic(err)
 	}
+
 	return client
 }
 
@@ -48,22 +92,22 @@ func NewClient(config *twitch.Config) (*Client, error) {
 		return nil, fmt.Errorf("Access Token not specified")
 	}
 
-	c := &Client{
-		config: config,
+	if config.HTTPClient == nil {
+		config.HTTPClient = cleanhttp.DefaultClient()
 	}
-	return c.init()
-}
 
-func (c *Client) init() (*Client, error) {
-	u, err := url.Parse(c.Endpoint)
+	c := &Client{
+		accessToken: config.AccessToken,
+		clientId:    config.ClientId,
+		httpClient:  config.HTTPClient,
+	}
+
+	u, err := url.Parse(config.Endpoint)
 	if err != nil {
 		return nil, err
 	}
-	c.url = u
 
-	if c.HTTPClient == nil {
-		c.HTTPClient = cleanhttp.DefaultClient()
-	}
+	c.url = u
 
 	return c, nil
 }
@@ -110,7 +154,7 @@ func (c *Client) Request(verb, p string, ro *twitch.RequestOptions) (*http.Respo
 		return nil, err
 	}
 
-	resp, err := checkResp(c.HTTPClient.Do(req))
+	resp, err := checkResp(c.httpClient.Do(req))
 	if err != nil {
 		return resp, err
 	}
@@ -122,7 +166,7 @@ func (c *Client) Request(verb, p string, ro *twitch.RequestOptions) (*http.Respo
 // form data.
 func (c *Client) RequestForm(verb, p string, i interface{}, ro *twitch.RequestOptions) (*http.Response, error) {
 	if ro == nil {
-		ro = new(RequestOptions)
+		ro = new(twitch.RequestOptions)
 	}
 
 	if ro.Headers == nil {
@@ -157,6 +201,6 @@ func checkResp(resp *http.Response, err error) (*http.Response, error) {
 	case 200, 201, 202, 204, 205, 206:
 		return resp, nil
 	default:
-		return resp, NewHTTPError(resp)
+		return resp, twitch.NewHTTPError(resp)
 	}
 }

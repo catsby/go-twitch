@@ -12,7 +12,8 @@ import (
 type StreamType string
 
 const (
-	// StreamTypeCache sets the cache to cache.
+	// TODO These docs are copy/pasta/wrong
+	// StreamTypeLive
 	StreamTypeLive StreamType = "live"
 
 	// StreamTypePass sets the cache to pass through.

@@ -15,7 +15,7 @@ func TestStream_GetFollowed(t *testing.T) {
 
 	// Get
 	var output *GetFollowedStreamsOutput
-	record(t, "streams/followed", func(c *twitch.Client) {
+	recordKraken(t, "streams/followed", func(c *kraken.Client) {
 		output, err = c.GetFollowedStreams(&GetFollowedStreamsInput{})
 	})
 	if err != nil {
@@ -46,7 +46,7 @@ func TestStream_GetStream_basic(t *testing.T) {
 	// Get
 	var output *GetStreamOutput
 	var resp *http.Response
-	record(t, "streams/41598188", func(c *twitch.Client) {
+	recordKraken(t, "streams/41598188", func(c *kraken.Client) {
 		output, resp, err = c.GetStream(&GetStreamInput{
 			ChannelId: 41598188,
 		})
@@ -86,7 +86,7 @@ func TestStream_GetLiveStreams(t *testing.T) {
 		var err error
 		// Get
 		var output *GetLiveStreamsOutput
-		record(t, c.Path, func(client *Client) {
+		recordKraken(t, c.Path, func(client *Client) {
 			output, err = client.GetLiveStreams(c.Req)
 		})
 		if err != nil {
@@ -112,7 +112,7 @@ func TestStream_GetStream_Summary(t *testing.T) {
 
 	// Get
 	var output *GetStreamSummaryOutput
-	record(t, "stream/summary/overwatch_summary", func(c *twitch.Client) {
+	recordKraken(t, "stream/summary/overwatch_summary", func(c *kraken.Client) {
 		output, err = c.GetStreamSummary(&GetStreamSummaryInput{
 			Game: "Overwatch",
 		})
@@ -140,7 +140,7 @@ func TestStream_GetFeatured(t *testing.T) {
 
 	// Get
 	var output *GetFeaturedStreamsOutput
-	record(t, "streams/featured", func(c *twitch.Client) {
+	recordKraken(t, "streams/featured", func(c *kraken.Client) {
 		output, err = c.GetFeaturedStreams(&GetFeaturedStreamsInput{})
 	})
 	if err != nil {

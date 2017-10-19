@@ -15,7 +15,7 @@ func TestUser_Get_Id(t *testing.T) {
 	// Get
 	var output *GetUserOutput
 	// c := DefaultClient()
-	record(t, "users/get_by_id", func(c *twitch.Client) {
+	recordKraken(t, "users/get_by_id", func(c *twitch.Client) {
 		output, err = c.GetUser(&GetUserInput{Id: 41598188})
 	})
 	if err != nil {
@@ -45,7 +45,7 @@ func TestUser_Get_self(t *testing.T) {
 	// Get
 	var output *GetUserOutput
 	// c := DefaultClient()
-	record(t, "users/get_by_self_token", func(c *twitch.Client) {
+	recordKraken(t, "users/get_by_self_token", func(c *twitch.Client) {
 		output, err = c.GetUser(nil)
 	})
 	if err != nil {
@@ -74,7 +74,7 @@ func TestUser_Get_UserFollows(t *testing.T) {
 	// Get
 	var output *GetUserFollowsOutput
 	// c := DefaultClient()
-	record(t, "users/get_follows", func(c *twitch.Client) {
+	recordKraken(t, "users/get_follows", func(c *twitch.Client) {
 		output, err = c.GetUserFollows(&GetUserFollowsInput{Id: 173365798})
 	})
 	if err != nil {

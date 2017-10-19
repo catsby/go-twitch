@@ -4,14 +4,16 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/catsby/go-twitch/twitch"
 )
 
-// RawRequest accepts a verb, URL, and RequestOptions struct and returns the
+// RawRequest accepts a verb, URL, and twitch.RequestOptions struct and returns the
 // constructed http.Request and any errors that occurred
-func (c *Client) RawRequest(verb, p string, ro *RequestOptions) (*http.Request, error) {
+func (c *Client) RawRequest(verb, p string, ro *twitch.RequestOptions) (*http.Request, error) {
 	// Ensure we have request options.
 	if ro == nil {
-		ro = new(RequestOptions)
+		ro = new(twitch.RequestOptions)
 	}
 
 	// Append the path to the URL.
@@ -45,7 +47,7 @@ func (c *Client) RawRequest(verb, p string, ro *RequestOptions) (*http.Request, 
 	}
 
 	// Set the User-Agent.
-	request.Header.Set("User-Agent", UserAgent)
+	request.Header.Set("User-Agent", twitch.UserAgent)
 
 	// Add any custom headers.
 	for k, v := range ro.Headers {

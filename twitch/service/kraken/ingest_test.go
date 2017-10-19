@@ -14,7 +14,7 @@ func TestIngest_basic(t *testing.T) {
 
 	// Get
 	var output *GetIngestServerListOutput
-	record(t, "ingests/get", func(c *twitch.Client) {
+	recordKraken(t, "ingests/get", func(c *kraken.Client) {
 		output, err = c.GetIngestServerList(nil)
 	})
 	if err != nil {
