@@ -48,6 +48,9 @@ type Config struct {
 	//   https://dev.twitch.tv/docs/v5/guides/authentication/#registration
 	// Note: probably not needed for general API consumption
 	ClientId string
+
+	// this is probably used?
+	ClientSecret string
 }
 
 // DefaultClient instantiates a new Twitch API client for talking to the new
