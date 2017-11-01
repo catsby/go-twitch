@@ -4,8 +4,6 @@ import (
 	"log"
 	"net/http"
 	"testing"
-
-	"github.com/catsby/go-twitch/twitch"
 )
 
 func TestStream_GetFollowed(t *testing.T) {
@@ -15,7 +13,7 @@ func TestStream_GetFollowed(t *testing.T) {
 
 	// Get
 	var output *GetFollowedStreamsOutput
-	recordKraken(t, "streams/followed", func(c *kraken.Client) {
+	recordKraken(t, "streams/followed", func(c *Client) {
 		output, err = c.GetFollowedStreams(&GetFollowedStreamsInput{})
 	})
 	if err != nil {
@@ -46,7 +44,7 @@ func TestStream_GetStream_basic(t *testing.T) {
 	// Get
 	var output *GetStreamOutput
 	var resp *http.Response
-	recordKraken(t, "streams/41598188", func(c *kraken.Client) {
+	recordKraken(t, "streams/41598188", func(c *Client) {
 		output, resp, err = c.GetStream(&GetStreamInput{
 			ChannelId: 41598188,
 		})
@@ -112,7 +110,7 @@ func TestStream_GetStream_Summary(t *testing.T) {
 
 	// Get
 	var output *GetStreamSummaryOutput
-	recordKraken(t, "stream/summary/overwatch_summary", func(c *kraken.Client) {
+	recordKraken(t, "stream/summary/overwatch_summary", func(c *Client) {
 		output, err = c.GetStreamSummary(&GetStreamSummaryInput{
 			Game: "Overwatch",
 		})
@@ -140,7 +138,7 @@ func TestStream_GetFeatured(t *testing.T) {
 
 	// Get
 	var output *GetFeaturedStreamsOutput
-	recordKraken(t, "streams/featured", func(c *kraken.Client) {
+	recordKraken(t, "streams/featured", func(c *Client) {
 		output, err = c.GetFeaturedStreams(&GetFeaturedStreamsInput{})
 	})
 	if err != nil {
