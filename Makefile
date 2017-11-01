@@ -18,7 +18,7 @@ gopkg.in/yaml.v2 \
 gopkg.in/check.v1
 
 # List of tests to run
-TEST ?= ./twitch/...
+TEST ?= ./...
 
 # List all our actual files, excluding vendor
 GOFILES = $(shell go list $(TEST) | grep -v /vendor/)
@@ -54,6 +54,11 @@ bootstrap:
 test:
 	@echo "==> Testing ${PROJECT}..."
 	@go test -timeout=60s -parallel=20 -tags="${GOTAGS}" ${TEST} ${TESTARGS}
+
+# test runs the test suite, verbosely
+testv:
+	@echo "==> Testing ${PROJECT}..."
+	@go test -timeout=60s -parallel=20 -tags="${GOTAGS}" ${TEST} -v ${TESTARGS}
 
 pre-commit:
 	@echo "==> Installing pre-commit hook..."
