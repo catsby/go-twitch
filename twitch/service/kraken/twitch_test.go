@@ -10,7 +10,7 @@ import (
 	cleanhttp "github.com/hashicorp/go-cleanhttp"
 )
 
-func recordKraken(t *testing.T, fixture string, f func(*twitch.Client)) {
+func recordKraken(t *testing.T, fixture string, f func(*Client)) {
 	modeDisabledEnv := os.Getenv("RECORD_DISABLE")
 	mode := recorder.ModeReplaying
 	if modeDisabledEnv == "true" {

@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
-
-	"github.com/catsby/go-twitch/twitch"
 )
 
 func TestChannel_Get_basic(t *testing.T) {
@@ -71,7 +69,7 @@ func TestChannel_Get_basic(t *testing.T) {
 		// Get
 		var output *GetChannelOutput
 		//c := DefaultClient()
-		recordKraken(t, fmt.Sprintf("channels/get_%s", tc.Label), func(c *kraken.Client) {
+		recordKraken(t, fmt.Sprintf("channels/get_%s", tc.Label), func(c *Client) {
 			output, err = c.GetChannel(tc.Input)
 		})
 		if err != nil {
@@ -95,7 +93,7 @@ func TestChannel_GetFollows_basic(t *testing.T) {
 	var err error
 	var output *GetChannelFollowersOutput
 	// c := DefaultClient()
-	recordKraken(t, "channels/follows", func(c *kraken.Client) {
+	recordKraken(t, "channels/follows", func(c *Client) {
 		output, err = c.GetChannelFollowers(&GetChannelFollowersInput{Id: 43664778})
 	})
 	if err != nil {
@@ -124,7 +122,7 @@ func TestChannel_Get_ChannelVideos_basic(t *testing.T) {
 	// Get
 	var err error
 	var output *GetChannelVideosOutput
-	recordKraken(t, "channels/videos_basic", func(c *kraken.Client) {
+	recordKraken(t, "channels/videos_basic", func(c *Client) {
 		output, err = c.GetChannelVideos(&GetChannelVideosInput{Id: 43664778})
 	})
 	if err != nil {
