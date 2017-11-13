@@ -4,10 +4,24 @@
 in golang, currently under development. It supports v5 of the Twitch API, with
 plans to support the new Twitch API as it is developed.
 
-- https://dev.twitch.tv/docs/v5
-- https://dev.twitch.tv/docs/api ("new" API, not complete yet)
+The current API, V5, is deprecated and will be removed on December 31st, 2018.
+The new Twitch API is live but not 100% feature complete, and is under active
+development. 
+
+- V5 docs: https://dev.twitch.tv/docs/v5
+- New API docs: https://dev.twitch.tv/docs/api ("new" API, not complete yet)
 
 # Usage 
+
+The Current API service, V5, is nicknamed `kraken` (or so I assume, based on the API base url
+or `https://api.twitch.tv/kraken/`). The new API is nicknamed `helix` (same
+guess off of base url, `https://api.twitch.tv/helix/`). To support both, this
+SDK offers a client for each, `kraken` and `helix`, with functionality tied to
+their corresponding endpoint/service. `Kraken` is more compmlete in both terms
+of API functionality and SDK coverage, while `Helix` is a work in progress on
+both parts. I plan to continue to implement things missing in `Kraken` while
+also building out `Helix` as it's developed. This SDK will support both until
+`Kraken` is turned off.
 
 To include `go-twitch` in your project, first get it with `go get`:
 
@@ -15,17 +29,28 @@ To include `go-twitch` in your project, first get it with `go get`:
 
 You can then import and use it in your code:
 
-    import "github.com/catsby/go-twitch/twitch"
-
+    # main.go
+    package main
+    
+    import (
+    	"fmt"
+    	"log"
+    
+    	"github.com/catsby/go-twitch/service/kraken"
+    )
+    
     func main() {
-      client := twitch.DefaultClient()
-      
-      // Get user scoped to auth token
-      user, err := client.GetUser(nil)
-      // do things
+    	client := kraken.DefaultClient(nil)
+    
+    	me, err := client.GetUser(nil)
+    	if err != nil {
+    		log.Fatalf("Error finding me: %s", err)
+    	}
+    
+    	fmt.Println("My name is", me.Name)
     }
 
-See the `examples/streaming` directory for an example.
+See `examples/streaming/main.go` in this repository for an example.
 
 # Development
 
