@@ -1,0 +1,52 @@
+---
+version: 1
+rwmutex: {}
+interactions:
+- request:
+    body: ""
+    form: {}
+    headers:
+      Authorization:
+      - Bearer xxxxxxxxxxxxx
+      User-Agent:
+      - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9.2)
+    url: https://api.twitch.tv/helix/games?name=Heroes+of+the+Storm
+    method: GET
+  response:
+    body: '{"data":[{"id":"32959","name":"Heroes of the Storm","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Heroes%20of%20the%20Storm-{width}x{height}.jpg"}]}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 14 Nov 2017 16:20:04 GMT
+      Expires:
+      - "0"
+      Front-End-Https:
+      - "on"
+      Pragma:
+      - no-cache
+      Ratelimit-Limit:
+      - "120"
+      Ratelimit-Remaining:
+      - "115"
+      Ratelimit-Reset:
+      - "1510676460"
+      Server:
+      - nginx
+      Set-Cookie:
+      - AWSALB=sxxUIfbOlw+hfZfHfCOc8l9XBTter6DXQxKpJm3hXFvxfwmTIiFRZQ/GsKM6ZCUewH6rlGt60Q31fFf8T0UWOuGB/oqCi2QnGhBjarpMuUcfGB5bJkyyKGKD8gSv;
+        Expires=Tue, 21 Nov 2017 16:20:04 GMT; Path=/
+      Timing-Allow-Origin:
+      - https://www.twitch.tv
+      Twitch-Trace-Id:
+      - 41d5036953196c06bdf4005c7163221e
+      Vary:
+      - Accept-Encoding
+      X-Ctxlog-Logid:
+      - 1-5a0b17b4-4acd71ca174d42b13e7aad5b
+    status: 200 OK
+    code: 200
