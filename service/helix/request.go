@@ -23,8 +23,15 @@ func (c *Client) RawRequest(verb, p string, ro *twitch.RequestOptions) (*http.Re
 	// Add the token and other params.
 	var params = make(url.Values)
 	for k, v := range ro.Params {
-		params.Add(k, v)
+		// expand any comman seperated lists. The Helix API expects & repeated
+		// parameters, not comman seperated.
+		// See https://dev.twitch.tv/docs/api#requests
+		s := strings.Split(v, ",")
+		for _, v := range s {
+			params.Add(k, v)
+		}
 	}
+
 	u.RawQuery = params.Encode()
 
 	// Create the request object.
@@ -35,11 +42,8 @@ func (c *Client) RawRequest(verb, p string, ro *twitch.RequestOptions) (*http.Re
 
 	// Set the Access Token
 	if c.accessToken != "" {
-		request.Header.Set(AccessTokenHeader, "OAuth "+c.accessToken)
+		request.Header.Set(AccessTokenHeader, "Bearer "+c.accessToken)
 	}
-
-	// set accept header for API
-	request.Header.Set("Accept", "application/vnd.twitchtv.v5+json")
 
 	// Set the Client Id key.
 	if c.clientId != "" {
