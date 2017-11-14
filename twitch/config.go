@@ -18,7 +18,7 @@ import (
 
 // DefaultEndpoint is the default endpoint for Twitch
 const KrakenEndpoint = "https://api.twitch.tv/kraken/"
-const HelixEndpoint = "https://api.twitch.tv/kraken/"
+const HelixEndpoint = "https://api.twitch.tv/helix/"
 const DefaultEndpoint = KrakenEndpoint
 
 // ProjectURL is the url for this library.
