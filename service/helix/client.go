@@ -70,11 +70,10 @@ func DefaultClient(config *twitch.Config) (*Client, error) {
 		config.ClientId = os.Getenv(ClientIdEnvVar)
 	}
 	if config.AccessToken == "" {
-		log.Printf("\t setting access token \n")
 		config.AccessToken = os.Getenv(AccessTokenEnvVar)
 	}
 	if config.Endpoint == "" {
-		config.Endpoint = twitch.DefaultEndpoint
+		config.Endpoint = twitch.HelixEndpoint
 	}
 	if config.ClientSecret == "" {
 		config.ClientSecret = os.Getenv(ClientIdEnvVar)
@@ -181,8 +180,8 @@ func (c *Client) RequestForm(verb, p string, i interface{}, ro *twitch.RequestOp
 	if ro.Headers == nil {
 		ro.Headers = make(map[string]string)
 	}
+
 	ro.Headers["Content-Type"] = "application/x-www-form-urlencoded"
-	// log.Printf("headers:\n%s\n", spew.Sdump(ro.Headers))
 
 	buf := new(bytes.Buffer)
 	if err := form.NewEncoder(buf).KeepZeros(true).DelimitWith('|').Encode(i); err != nil {
