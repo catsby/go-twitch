@@ -2,6 +2,7 @@ package helix
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/catsby/go-twitch/twitch"
@@ -22,12 +23,12 @@ type GetGamesOutput struct {
 type GetGamesInput struct {
 	// Games are referenced by a globally unique string called a slug
 	Names []string `mapstructure:"name"`
-	Ids   []string `mapstructure:"id"`
+	Ids   []int    `mapstructure:"id"`
 }
 
-// Gets details about a specified clip
+// Gets details specific games. Can be list of games, ids
 // See:
-//  - https://dev.twitch.tv/docs/v5/reference/games#get-clip
+//  - https://dev.twitch.tv/docs/api/reference#get-games
 func (k *Client) GetGames(i *GetGamesInput) (*GetGamesOutput, error) {
 	if i == nil || (len(i.Names) == 0 && len(i.Ids) == 0) {
 		return nil, fmt.Errorf("[ERR] No Name or Id for GetGamess")
@@ -40,10 +41,16 @@ func (k *Client) GetGames(i *GetGamesInput) (*GetGamesOutput, error) {
 			"name": strings.Join(i.Names, ","),
 		}
 	}
+
 	if len(i.Ids) > 0 {
-		ro.Params = map[string]string{
-			"id": strings.Join(i.Ids, ","),
+		var ids []string
+		if ro.Params == nil {
+			ro.Params = map[string]string{}
 		}
+		for _, i := range i.Ids {
+			ids = append(ids, strconv.Itoa(i))
+		}
+		ro.Params["id"] = strings.Join(ids, ",")
 	}
 
 	resp, err := k.Get(path, ro)

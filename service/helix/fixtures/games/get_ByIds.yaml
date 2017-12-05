@@ -10,7 +10,7 @@ interactions:
       - Bearer xxxxxxxxxxxxx
       User-Agent:
       - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9.2)
-    url: https://api.twitch.tv/helix/games?name=Heroes+of+the+Storm&name=Fortnite
+    url: https://api.twitch.tv/helix/games?id=32959&id=33214
     method: GET
   response:
     body: '{"data":[{"id":"32959","name":"Heroes of the Storm","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Heroes%20of%20the%20Storm-{width}x{height}.jpg"},{"id":"33214","name":"Fortnite","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-{width}x{height}.jpg"}]}'
@@ -32,21 +32,21 @@ interactions:
       Ratelimit-Limit:
       - "120"
       Ratelimit-Remaining:
-      - "113"
+      - "111"
       Ratelimit-Reset:
       - "1512512070"
       Server:
       - nginx
       Set-Cookie:
-      - AWSALB=HpUkkkuzIWGT4U+HNgJEYMP8Su2XjMzqOgKNjYDgvFojz3d2f1+xs22MlkpeDkt89TK6/EhIaabJKHLzya12r7MOfO2pSZ9K1rNQ0mlWDbErQW0rLd8O6bKzg1eD;
+      - AWSALB=lUNLUmc5HXN1zqoNJ72QFy8ARlnpBMmh6W7soVG0GQEOgW6sQ0yNKmkqh6pdaGsq7Y2yrPLei7Yr1nMZlxulBF4ADFAFj0zke8m+xBeHOtfOdL0hBXltocAssPj5;
         Expires=Tue, 12 Dec 2017 22:13:32 GMT; Path=/
       Timing-Allow-Origin:
       - https://www.twitch.tv
       Twitch-Trace-Id:
-      - f29b0c2124301b3f685902c61adcd92b
+      - f9b471f3c0ff87aa9e17cb33f0e0be92
       Vary:
       - Accept-Encoding
       X-Ctxlog-Logid:
-      - 1-5a271a0c-49afd1e5596dbbf82b300612
+      - 1-5a271a0c-0abe21da1f9eb3323c3d45ff
     status: 200 OK
     code: 200

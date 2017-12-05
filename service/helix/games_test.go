@@ -36,6 +36,28 @@ func TestGame_Get_basic(t *testing.T) {
 				Names: []string{"Heroes of the Storm", "Fortnite"},
 			},
 		},
+		{
+			Label:    "DoubleGameReversed",
+			Expected: []*Game{&expectedGameHeroes, &expectedGameFortnite},
+			Input: &GetGamesInput{
+				Names: []string{"Fortnite", "Heroes of the Storm"},
+			},
+		},
+		{
+			Label:    "ByIds",
+			Expected: []*Game{&expectedGameHeroes, &expectedGameFortnite},
+			Input: &GetGamesInput{
+				Ids: []int{32959, 33214},
+			},
+		},
+		{
+			Label:    "NameAndId",
+			Expected: []*Game{&expectedGameHeroes, &expectedGameFortnite},
+			Input: &GetGamesInput{
+				Names: []string{"Heroes of the Storm"},
+				Ids:   []int{33214},
+			},
+		},
 	}
 
 	for _, tc := range cases {

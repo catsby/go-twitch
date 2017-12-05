@@ -12,7 +12,6 @@ import (
 )
 
 func TestHelixClient_DefaultClient(t *testing.T) {
-
 	cases := []struct {
 		Label       string
 		Envs        []string

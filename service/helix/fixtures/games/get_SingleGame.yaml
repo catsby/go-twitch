@@ -22,7 +22,7 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 14 Nov 2017 16:20:04 GMT
+      - Tue, 05 Dec 2017 22:13:32 GMT
       Expires:
       - "0"
       Front-End-Https:
@@ -32,21 +32,21 @@ interactions:
       Ratelimit-Limit:
       - "120"
       Ratelimit-Remaining:
-      - "115"
+      - "114"
       Ratelimit-Reset:
-      - "1510676460"
+      - "1512512070"
       Server:
       - nginx
       Set-Cookie:
-      - AWSALB=sxxUIfbOlw+hfZfHfCOc8l9XBTter6DXQxKpJm3hXFvxfwmTIiFRZQ/GsKM6ZCUewH6rlGt60Q31fFf8T0UWOuGB/oqCi2QnGhBjarpMuUcfGB5bJkyyKGKD8gSv;
-        Expires=Tue, 21 Nov 2017 16:20:04 GMT; Path=/
+      - AWSALB=lfXkPhsXNWOnkfvqarg78inkGnB7JiI47Ut3UjifN2lDLl60GFYTz+e+i1p8HaSovLkVOglCNBUBmxRp488faKzpc3pLhrgFBzySnPrkhctKMh7SoHiMGX8AX17L;
+        Expires=Tue, 12 Dec 2017 22:13:31 GMT; Path=/
       Timing-Allow-Origin:
       - https://www.twitch.tv
       Twitch-Trace-Id:
-      - 41d5036953196c06bdf4005c7163221e
+      - 3f88d6b960b2ae156796c4995d0bdc98
       Vary:
       - Accept-Encoding
       X-Ctxlog-Logid:
-      - 1-5a0b17b4-4acd71ca174d42b13e7aad5b
+      - 1-5a271a0b-5f37961c1b4e991a1431fab9
     status: 200 OK
     code: 200

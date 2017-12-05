@@ -1,3 +1,8 @@
+// Package helix exposes a client for interacting with the upcomming version of
+// the Twitch.tv API. Helix is considered the "new" and "current" API, though at
+// this time it is incomlete. Kraken is v5 and complete, but considered
+// deprecated and will be turned of ~Dec. 2018. When possible, you should use
+// helix.
 package helix
 
 import (

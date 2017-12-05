@@ -10,10 +10,11 @@ interactions:
       - Bearer xxxxxxxxxxxxx
       User-Agent:
       - catsby/go-twitch/0.1 (+github.com/catsby/go-twitch; go1.9.2)
-    url: https://api.twitch.tv/helix/games?name=Heroes+of+the+Storm&name=Fortnite
+    url: https://api.twitch.tv/helix/games?id=33214&name=Heroes+of+the+Storm
     method: GET
   response:
-    body: '{"data":[{"id":"32959","name":"Heroes of the Storm","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Heroes%20of%20the%20Storm-{width}x{height}.jpg"},{"id":"33214","name":"Fortnite","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-{width}x{height}.jpg"}]}'
+    body: '{"data":[{"id":"33214","name":"Fortnite","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Fortnite-{width}x{height}.jpg"},{"id":"32959","name":"Heroes
+      of the Storm","box_art_url":"https://static-cdn.jtvnw.net/ttv-boxart/Heroes%20of%20the%20Storm-{width}x{height}.jpg"}]}'
     headers:
       Access-Control-Allow-Origin:
       - '*'
@@ -32,21 +33,21 @@ interactions:
       Ratelimit-Limit:
       - "120"
       Ratelimit-Remaining:
-      - "113"
+      - "110"
       Ratelimit-Reset:
       - "1512512070"
       Server:
       - nginx
       Set-Cookie:
-      - AWSALB=HpUkkkuzIWGT4U+HNgJEYMP8Su2XjMzqOgKNjYDgvFojz3d2f1+xs22MlkpeDkt89TK6/EhIaabJKHLzya12r7MOfO2pSZ9K1rNQ0mlWDbErQW0rLd8O6bKzg1eD;
+      - AWSALB=ZfAerciKLiAxsnGqg1Z6Bg9ZsnKSgTdS5W44hjoLLcaoJj35mkQdxY6R3cHRWsj2YtsahhvzILwX3r+DlsPAGGbxPjwb7KPCGbw6z79KMbDIMif/RA/ioEH/bK9N;
         Expires=Tue, 12 Dec 2017 22:13:32 GMT; Path=/
       Timing-Allow-Origin:
       - https://www.twitch.tv
       Twitch-Trace-Id:
-      - f29b0c2124301b3f685902c61adcd92b
+      - acbb4a7b96ab69850a1682a2f64fe67c
       Vary:
       - Accept-Encoding
       X-Ctxlog-Logid:
-      - 1-5a271a0c-49afd1e5596dbbf82b300612
+      - 1-5a271a0c-76de7a38782c89e85c962644
     status: 200 OK
     code: 200
